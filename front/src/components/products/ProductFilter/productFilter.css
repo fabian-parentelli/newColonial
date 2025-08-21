@@ -1,0 +1,57 @@
+@import '../../../style/class.css';
+
+.productFilter {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.productFilter .productFilterName {
+    width: 310px;
+}
+
+.productFilter div select {
+    height: 40px;
+    width: 90px;
+}
+
+.productFilter .productFilterSect {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.productFilter .productFilterP {
+    display: none;
+}
+
+@media (max-width: 767px) {
+
+    .productFilter .productFilterSect {
+        height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    .productFilter .productFilterSect.show {
+        height: 100%;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .productFilter .productFilterP {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 310px;
+        width: 100%;
+        height: 40px;
+        background-color: var(--colorA);
+        border-radius: 6px;
+        color: var(--colorD);
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+    }
+}

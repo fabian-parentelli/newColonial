@@ -1,0 +1,57 @@
+@import '../../../../../style/colors.css';
+
+.diaGet {
+    box-shadow: 0px 0px 5px gray;
+    padding: 1rem;
+    border-radius: 6px;
+    width: max-content;
+    max-width: 100%;
+}
+
+.diaGets {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.diaGetsOver {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+}
+
+.diaGetsW {
+    flex-wrap: wrap;
+    overflow-x: visible;
+}
+
+.diaGets .diaGetDiv {
+    background-color: var(--colorAAA);
+    padding: 6px 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    flex-direction: column;
+}
+
+.diaGets .diaGetDiv .diaGetImg {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.diaGets .diaGetDiv .diaGetSect {
+    margin-top: 6px;
+    padding-top: 6px;
+    width: 80%;
+    border-top: solid var(--colorAA) 1px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.diaGets div img {
+    width: 120px;
+    object-fit: contain;
+    border-radius: 50%;
+}

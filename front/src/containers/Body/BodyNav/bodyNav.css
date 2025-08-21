@@ -1,0 +1,30 @@
+@import '../../../style/colors.css';
+
+.bodyNav {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    overflow-y: auto;
+    padding: 1rem 0;
+}
+
+.bodyNav a {
+    text-decoration: none;
+    color: var(--colorA);
+    font-weight: 600;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+    user-select: none;
+}
+
+.bodyNav a:hover {
+    color: var(--colorRR);
+}
+
+@media (max-width: 767px) {
+    
+    .bodyNav a {
+        font-size: 12px;
+    }
+}

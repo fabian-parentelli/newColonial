@@ -1,0 +1,25 @@
+.bonus {
+    margin-top: 70px;
+    min-height: 80vh;
+    padding-bottom: 4rem;
+}
+
+.bonus .bonusImgPc {
+    width: 100%;
+}
+
+.bonus .bonusImgCel {
+    width: 100%;
+    display: none;
+}
+
+@media (max-width: 767px) {
+    
+    .bonus .bonusImgPc {
+        display: none;
+    }
+
+    .bonus .bonusImgCel {
+        display: block;
+    }
+}

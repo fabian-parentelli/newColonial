@@ -1,0 +1,8 @@
+.productSectPage {
+    min-height: 100vh;
+    margin-top: 70px;
+}
+
+.productSectPage .productSectPageSep {
+    height: 20px;
+}

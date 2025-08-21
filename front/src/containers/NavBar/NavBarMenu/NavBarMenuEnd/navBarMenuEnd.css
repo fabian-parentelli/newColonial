@@ -1,0 +1,7 @@
+.navBarMenuEnd {
+    display: flex;
+    align-items: flex-end;
+    color: gray;
+    gap: 1rem;
+    cursor: pointer;
+}

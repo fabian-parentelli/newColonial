@@ -1,0 +1,12 @@
+.dunAvatar {
+    max-width: 516px;
+    width: 100%;
+    padding-top: 1em;
+}
+
+@media (max-width: 767px) {
+    .dunAvatar {
+        max-width: 300px;
+        width: 100%;
+    }
+}

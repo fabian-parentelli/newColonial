@@ -1,0 +1,57 @@
+@import '../../../../../style/colors.css';
+
+.productSame {
+    /* position: relative; */
+    width: 100%;
+}
+
+.productSame h3 {
+    text-align: center;
+    color: var(--colorB);
+}
+
+.carousel-wrapper {
+    width: 80%;
+    margin: 2rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    gap: 1rem;
+    padding: 1rem;
+    /* Firefox */
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+    /* Chrome */
+}
+
+.arrow {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0 5px;
+    user-select: none;
+    background-color: gainsboro;
+    z-index: 1000;
+}
+
+@media (max-width: 767px) {
+
+    .carousel-wrapper {
+        width: 96%;
+    }
+
+    .arrow {
+        display: none;
+    }
+}

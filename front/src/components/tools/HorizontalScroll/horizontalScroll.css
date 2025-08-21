@@ -1,0 +1,30 @@
+.horizontal-scroll {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.scroll-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    gap: 1rem;
+    margin: 0 1rem;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.arrow {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1;
+}

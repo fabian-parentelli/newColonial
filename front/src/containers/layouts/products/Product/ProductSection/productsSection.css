@@ -1,0 +1,63 @@
+@import '../../../../../style/colors.css';
+
+.productsSection {
+    max-width: 800px;
+    width: 90%;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 1rem;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 6px;
+    padding: 2rem;
+    position: relative;
+}
+
+.productsSection  img {
+    max-width: 300px;
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    filter: drop-shadow(0px 0px 5px gray);
+}
+
+.productsSection .productSectData {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* Data */
+
+.productsSection .productSectData .productSectDataLinks a {
+    color: gray;
+    text-decoration: none;
+    transition: .3s ease-in-out;
+    font-size: 12px;
+}   
+
+.productsSection .productSectData .productSectDataLinks a:hover {
+    color: var(--colorA);
+}
+
+.productsSection .productSectData .productLine {
+    width: 80%;
+    border-top: 1px solid var(--colorAAA);
+    padding-top: 12px;
+}
+
+.productsSection .productSectData .productPrice {
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--colorRR);
+}
+
+.productsSection .productSectData .productCounter {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: gray;
+    user-select: none;
+}

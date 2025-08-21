@@ -1,0 +1,21 @@
+.cartOut {
+    background-color: gainsboro;
+    margin-top: 34px;
+    padding: 1rem;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 480px;
+}
+
+.cartOut h3 {
+    color: var(--colorA);
+}
+
+.cartOut .cartOutTotal {
+    background-color: var(--colorRR);
+    padding: 10px 6px;
+    color: var(--colorD);
+    font-weight: 600;
+}

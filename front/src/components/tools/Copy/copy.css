@@ -1,0 +1,6 @@
+.copy {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+}

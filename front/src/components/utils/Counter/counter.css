@@ -1,0 +1,28 @@
+@import '../../../style/colors.css';
+
+.counter {
+    display: flex;
+    align-items: center;
+}
+
+.counter .counterArrow {
+    padding: 0 3px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    border-radius: 3px;
+}
+
+.counter .counterArrow:hover {
+    background-color: #cccccc;
+}
+
+.counter .counterOne {
+    width: 30px;
+    text-align: center;
+    color: var(--colorA);
+    font-weight: 600;
+}
+
+.counter .counterCounter {
+    margin-left: 12px;
+}

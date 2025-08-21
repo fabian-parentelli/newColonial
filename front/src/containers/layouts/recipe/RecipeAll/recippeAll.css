@@ -1,0 +1,73 @@
+.recippeAll {
+    margin-top: 70px;
+    min-height: 80vh;
+}
+
+.recippeAll h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 2rem 0 1rem 0;
+}
+
+.recippeAll .recipePagePc {
+    width: 100%;
+}
+
+.recippeAll .recipePageCel {
+    width: 100%;
+    display: none;
+}
+
+.recippeAll .recippeAllFilter {
+    display: flex;
+    justify-content: center;
+}
+
+/* recipes */
+
+.recippeAll .recippeAllSect {
+    max-width: 1200px;
+    margin: 3rem auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 3rem 1rem;
+}
+
+.recippeAll .recippeAllSect .recippeAllDiv { 
+    text-decoration: none;
+    color: var(--colorA);
+    background-color: gainsboro;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 250px;
+    height: 250px;
+    box-shadow: 0px 0px 5px gray;
+    transition: .3s ease-in-out;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.recippeAll .recippeAllSect .recippeAllDiv:hover {
+    box-shadow: none;
+} 
+
+.recippeAll .recippeAllSect .recippeAllDiv img {
+    max-width: 180px;
+    filter: drop-shadow(0px 0px 5px gray);
+}
+
+@media (max-width: 767px) {
+
+    .recippeAll .recipePagePc {
+        display: none;
+    }
+
+    .recippeAll .recipePageCel {
+        display: block;
+    }
+}

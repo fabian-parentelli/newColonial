@@ -1,0 +1,102 @@
+.shipments {
+    margin-top: 70px;
+    min-height: 100vh;
+}
+
+.shipments .shipmentsImgPc {
+    width: 100%;
+}
+
+.shipments .shipmentsImgCel {
+    width: 100%;
+    display: none;
+}
+
+.shipments .shipmentsText {
+    padding-top: 2rem;
+    width: 80%;
+    line-height: 2;
+    margin: 1rem auto;
+}
+
+.shipments .shipmentsText a {
+    color: var(--colorRR);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.shipments #shipmentsMapCon {
+    display: flex;
+    align-items: center;
+}
+
+.shipments #shipmentsMapCon .shipmentsMap {
+    max-width: 600px;
+    width: 90%;
+    margin: 2rem  auto;
+    border: 2px solid var(--colorB);
+    border-radius: 12px;
+    box-shadow: 0px 0px 05px gray;
+}
+
+.shipments .shipmentsCity {
+    text-align: center;
+    padding-bottom: 2rem;
+    color: gray;
+}
+
+.shipments .shipmentsContact {
+    padding-top: 2rem;
+}
+
+.shipments h4 {
+    padding-top: 2rem;
+    text-align: center;
+    color: var(--colorA);
+}
+
+.shipments .shipmentsContact  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 3rem 0;
+}
+
+.shipments .shipmentsContact a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: .3s ease-in-out;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    gap: 3px;
+}
+
+.shipments .shipmentsContact div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    font-size: 12px;
+    gap: 3px;
+}
+
+.shipments .shipmentsContact a:hover {
+    background-color: gainsboro;
+}
+
+@media (max-width: 767px) {
+
+    .shipments .shipmentsImgPc {
+        display: none;
+    }
+
+    .shipments .shipmentsImgCel {
+        display: block;
+    }
+}

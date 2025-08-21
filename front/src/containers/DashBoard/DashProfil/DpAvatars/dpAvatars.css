@@ -1,0 +1,13 @@
+.dpAvatars {
+    height: 270px;
+    max-width: 600px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 767px) {
+
+    .dpAvatars {
+        max-width: 300px;
+    }
+}

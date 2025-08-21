@@ -1,0 +1,33 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+}
+
+.modal .modalSect {
+    background-color: #EAEBEF;
+    padding: 1rem;
+    overscroll-behavior: contain;
+    border-radius: 8px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal .modalSect::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+@media (max-width: 769px) {
+
+    .modal .modalSect {
+        max-width: 96%;
+    }
+}

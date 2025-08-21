@@ -1,0 +1,28 @@
+@import '../../../style/colors.css';
+
+.titleDash {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 6px;
+    padding: 0 24px 6px 0;
+    border-bottom: 1px solid var(--colorAAA);
+    color: var(--colorA);
+}
+
+.titleDashSect {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.titleDash a {
+    text-decoration: none;
+    color: var(--colorA);
+    transition: .3s ease-in-out;
+}
+
+.titleDash a:hover {
+    color: gray;
+}

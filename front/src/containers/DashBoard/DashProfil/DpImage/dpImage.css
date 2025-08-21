@@ -1,0 +1,11 @@
+.dpImage {
+    width: 300px;
+    box-shadow: 0px 0px 5px gray;
+    padding: 1rem;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    height: 286px;
+}

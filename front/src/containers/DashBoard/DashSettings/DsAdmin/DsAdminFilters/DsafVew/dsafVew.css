@@ -1,0 +1,50 @@
+@import '../../../../../../style//colors.css';
+
+.dsafVew {
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 0px 5px gray;
+    max-width: 620px;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.dsafVew .dsAdminFiltersSect {
+    width: 150px;
+}
+
+.dsafVew .dsAdminFiltersSect h4 {
+    background-color: var(--colorA);
+    padding: 6px 1px;
+    color: var(--colorC);
+}
+
+.dsafVew .dsAdminFiltersSect .dsAdminFiltersCol {
+    display: flex;
+    flex-direction: column;
+}
+
+.dsafVew .dsAdminFiltersSect .dsAdminFiltersCol .dsAdminFiltersDiv {
+    padding: 6px 0;
+    transition: .3s ease-in-out;
+}
+
+.dsafVew .dsAdminFiltersSect .dsAdminFiltersCol .dsAdminFiltersDiv input {
+    background-color: #EAEBEF;
+    border-color: #EAEBEF;
+}
+
+.dsafVew .dsAdminFiltersSect .dsAdminFiltersCol .dsAdminFiltersDiv input:hover {
+    border-color: gray;
+}
+
+@media (max-width: 620px) {
+
+    .dsafVew {
+        flex-direction: column;
+    }
+
+    .dsafVew .dsAdminFiltersSect {
+        width: 100%;
+    }
+}

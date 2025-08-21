@@ -1,0 +1,18 @@
+.dashBoard {
+    margin-top: 70px;
+    min-height: 105vh;
+    position: relative;
+    max-width: 99%;
+}
+
+.dashBoard .dashBoardSect {
+    margin-left: 65px;
+    padding-left: 1rem;
+}
+
+@media (max-width: 767px) {
+    
+    .dashBoard {
+        max-width: 96%;
+    }
+}

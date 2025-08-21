@@ -1,0 +1,20 @@
+.prodSections {
+    margin: 2rem auto;
+    max-width: 1100px;
+}
+
+.prodSections h2 {
+    color: var(--colorA);
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.prodSections .prodSectionsSect {
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;   
+    gap: 1.5rem;
+    margin: auto;
+    justify-content: center;
+    padding: 2rem 0 4rem 0;
+}

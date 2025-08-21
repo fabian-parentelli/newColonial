@@ -1,0 +1,37 @@
+.sliderWrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.sliderTrack {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+    will-change: transform;
+}
+
+.sliderItem {
+    flex: 0 0 100%;
+}
+
+.sliderItem img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.sliderWrapper .sliderTrack .sliderItem .bodyBannerCel {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    
+    .sliderWrapper .sliderTrack .sliderItem .bodyBannerPc {
+        display: none;
+    }
+    
+    .sliderWrapper .sliderTrack .sliderItem .bodyBannerCel {
+        display: block;
+    }
+}

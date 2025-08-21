@@ -1,0 +1,8 @@
+.dutmConfig {
+    max-width: 300px;
+    align-items: center;
+}
+
+.dutmConfig select {
+    max-width: 220px;
+}

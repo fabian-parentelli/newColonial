@@ -1,0 +1,32 @@
+.bonnusOpp {
+    margin-top: 4rem;
+}
+
+.bonnusOpp h3 {
+    color: var(--colorRR);
+    text-align: center;
+}
+
+.bonnusOpp .bonnusOppSect {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 2rem;
+}
+
+.bonnusOpp .bonnusOppSect .bonnusOppSectDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 50%;
+    color: var(--colorB);
+}
+
+@media (max-width: 767px) {
+
+    .bonnusOpp .bonnusOppSect .bonnusOppSectDiv {
+        width: 80%;
+        text-align: center;
+    }
+}

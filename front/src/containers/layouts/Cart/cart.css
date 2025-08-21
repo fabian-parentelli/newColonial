@@ -1,0 +1,37 @@
+.cart {
+    margin: 70px auto;
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.cart .cartInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart .cartInfo .cartTitle {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+.cart .cartInfo .cartTitle h2 {
+    color: var(--colorA);
+}
+
+.cart .cartMessage {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+@media (max-width: 871px) {
+
+    .cart {
+        width: 96%;
+        flex-direction: column;
+    }
+}

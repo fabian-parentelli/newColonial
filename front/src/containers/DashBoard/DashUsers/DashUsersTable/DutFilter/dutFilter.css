@@ -1,0 +1,25 @@
+.dutFilter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.dutFilter input,
+.dutFilter select,
+.dutFilter .dutFilterAuto {
+    max-width: 180px;
+    width: 100%;
+    height: 40px;
+}
+
+@media (max-width: 479px) {
+
+    .dutFilter input,
+    .dutFilter select,
+    .dutFilter .dutFilterAuto {
+        max-width: 150px;
+        width: 100%;
+        height: 40px;
+    }
+}

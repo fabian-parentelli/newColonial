@@ -1,0 +1,15 @@
+.checkBoxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.checkBoxesDiv {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.checkBoxes input {
+    width: 15px;
+}

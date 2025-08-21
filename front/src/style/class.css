@@ -1,0 +1,68 @@
+@import './colors.css';
+
+/* labels p */
+
+.pgray {
+    font-size: 12px;
+    color: gray;
+}
+
+.pred {
+    font-size: 12px;
+    color: red;
+}
+
+.pgreen {
+    font-size: 12px;
+    color: green;
+}
+
+.pcolorA {
+    font-size: 12px;
+    color: var(--colorA);
+}
+
+.pcolorB {
+    font-size: 12px;
+    color: var(--colorB);
+}
+
+/* colors */
+
+.colorA {
+    color: var(--colorA);
+}
+
+.colorB {
+    color: var(--colorB);
+}
+
+/* positions */
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* lines */
+
+.line {
+    width: 90%;
+    height: 1px;
+    background-color: var(--colorAAA);
+}
+
+/* cards */
+
+.dashCard {
+    box-shadow: 0px 0px 5px gray;
+    padding: 1rem;
+    border-radius: 6px;
+}

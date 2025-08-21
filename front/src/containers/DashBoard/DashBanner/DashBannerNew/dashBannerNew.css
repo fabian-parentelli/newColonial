@@ -1,0 +1,35 @@
+@import '../../../../style/colors.css';
+
+.dashBannerNew {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dashBannerNew .dashBannerNewCloud {
+    width: 250px;
+    height: 250px;
+    border: solid 1px var(--colorA);
+    border-radius: 18px;
+    background-color: gainsboro;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashBannerNew .dashBannerNewCloud img {
+    width: 70px;
+}
+
+.dashBannerNew .dashBannerNewSect {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.dashBannerNew .dashBannerNewSect label {
+    color: gray;
+    font-size: 12px;
+    max-width: 220px;
+}

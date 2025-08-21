@@ -1,0 +1,27 @@
+.register {
+    max-width: 400px !important;
+}
+
+.register .registerDiv {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.register button {
+    width: 220px;
+    margin: 0 auto;
+}
+
+@media (max-width: 426px) {
+    
+    .register {
+        width: 90% !important;
+    }
+
+    .register .registerDiv .userForm div input {
+        width: 240px;
+    }
+
+}

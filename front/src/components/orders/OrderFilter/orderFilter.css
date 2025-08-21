@@ -1,0 +1,11 @@
+.orderFilter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.orderFilter .orderFilterSec {
+    max-width: 150px;
+    width: 100%;
+}

@@ -1,0 +1,25 @@
+.productsNew {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    box-shadow: 0px 0px 5px gray;
+    padding: 1rem;
+    max-width: 855px;
+    border-radius: 8px;
+}
+
+.productsNew section label {
+    font-size: 12px;
+    color: gray;
+}
+
+.productsNew section .productsNewPreMod {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.productsNew section .productsNewPreMod label {
+    width: 100%;
+}
