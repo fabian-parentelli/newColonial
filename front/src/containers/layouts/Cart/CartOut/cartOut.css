@@ -19,3 +19,10 @@
     color: var(--colorD);
     font-weight: 600;
 }
+
+@media (max-width: 767px) {
+    
+    .cartOut {
+        margin: 34px auto;
+    }
+}

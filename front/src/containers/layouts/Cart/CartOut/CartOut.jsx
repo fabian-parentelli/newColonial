@@ -48,7 +48,6 @@ const CartOut = () => {
             <p className='cartOutTotal'>Total: ${totalCart()}</p>
             <p className='pgray'>{numberToWords(totalCart())} pesos.</p>
             <CartOutUser values={values} setValues={setValues} />
-
             <button className='btn btnA' disabled={loading}>
                 {loading ? <SpinnerH /> : 'Enviar pedido'}
             </button>

@@ -39,7 +39,7 @@ const categories = [
     { name: 'limpieza', icon: 'https://res.cloudinary.com/ddjldilsm/image/upload/v1755727525/clean_utfbqy_qb1gs2.png' },
     { name: 'lacteos', icon: 'https://res.cloudinary.com/ddjldilsm/image/upload/v1755727528/dairy_sous2l_kezj6o.png' },
     { name: 'perfumeria', icon: 'https://res.cloudinary.com/ddjldilsm/image/upload/v1755727533/perfumery_dslrkp_v4kju9.png' },
-    { name: 'snack', icon: 'https://res.cloudinary.com/ddjldilsm/image/upload/v1755727536/snack_zouxwt_iuyjtw.png' },
+    { name: 'snacks', icon: 'https://res.cloudinary.com/ddjldilsm/image/upload/v1755727536/snack_zouxwt_iuyjtw.png' },
     { name: 'frescos', icon: 'https://res.cloudinary.com/ddjldilsm/image/upload/v1755727531/fresh_mumkoz_no6crh.png' },
     { name: 'kiosko', icon: 'https://res.cloudinary.com/ddjldilsm/image/upload/v1755727532/kiosko_lp5gwj_coj3ls.png' },
     { name: 'quesos', icon: 'https://res.cloudinary.com/ddjldilsm/image/upload/v1755727527/chees_jy0og1_wmp2ld.png' },

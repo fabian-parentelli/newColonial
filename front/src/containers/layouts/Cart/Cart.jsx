@@ -1,5 +1,4 @@
 import './cart.css';
-import { useState } from 'react';
 import CartOut from './CartOut/CartOut';
 import CartItems from './CartItems/CartItems';
 import Icons from '../../../components/Icons/Icons';
