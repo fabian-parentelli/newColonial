@@ -38,7 +38,7 @@ const ProductsNew = () => {
     };
 
     return (
-        <div>
+        <div className='column'>
             <ProductsNewHtml
                 values={values}
                 setValues={setValues}
@@ -55,6 +55,8 @@ const ProductsNew = () => {
                 {modal.type === 'subCategories' && <ProdNewSubCat setModal={setModal} setValues={setValues} />}
                 {modal.type === 'family' && <ProdNewFamilies setModal={setModal} setValues={setValues} />}
             </Modal>
+
+            <p className='pgray'>20-7 // 25-10 // 12-5</p>
         </div>
     )
 };

@@ -7,7 +7,13 @@ function typeActivity(activity) {
         'newPassword': () => { return { icon: 'padlock', activity: 'Cambiaste tu contraseña' } },
         'updconfig': () => { return { icon: 'setting', activity: 'Actualización de la configuración' } },
         'postUser': () => { return { icon: 'user', activity: 'Creación de un usuario' } },
-        
+
+        'newOrder': () => {
+            return {
+                icon: 'event', activity: '', alert: 'Orden nueva'
+            }
+        },
+
         'default': () => { return { icon: 'carrot', activity: 'Actividad no definida' } },
     };
 

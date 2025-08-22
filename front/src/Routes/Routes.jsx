@@ -16,8 +16,6 @@ import ProductSectPage from "../containers/layouts/products/ProductSectPage/Prod
 import Shipments from "../containers/layouts/Shipments/Shipments.jsx";
 import Bonus from "../containers/layouts/Bonus/Bonus.jsx";
 import ProductAll from "../containers/layouts/products/ProductAll/ProductAll.jsx";
-import RecipePage from "../containers/layouts/recipe/RecipePage/RecipePage.jsx";
-import RecippeAll from "../containers/layouts/recipe/RecipeAll/RecipeAll.jsx";
 import Cart from "../containers/layouts/Cart/Cart.jsx";
 import BadgeBody from "../containers/layouts/BadgeBody/BadgeBody.jsx";
 import FallowUp from "../containers/layouts/FallowUp/FallowUp.jsx";
@@ -46,8 +44,6 @@ const WrapRoutes = () => {
                     <Route path="/shipments" element={<Shipments />} />
                     <Route path="/bonus" element={<Bonus />} />
                     <Route path="/all" element={<ProductAll />} />
-                    <Route path="/recipe/:id" element={<RecipePage />} />
-                    <Route path="/recipes" element={<RecippeAll />} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/fallowup/:id" element={<FallowUp />} />
                 </Routes>

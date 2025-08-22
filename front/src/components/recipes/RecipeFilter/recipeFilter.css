@@ -1,9 +1,0 @@
-.recipeFilter {
-    display: flex;
-    gap: 1rem;
-}
-
-.recipeFilter input, .recipeFilter select {
-    max-width: 220px;
-    width: 100%;
-}

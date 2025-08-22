@@ -2,15 +2,15 @@ import './counter.css';
 import Icons from '../../Icons/Icons';
 import Tooltip from '../../tools/Tooltip/Tooltip';
 
-const Counter = ({ preCounter, setPreCounter, box }) => {
+const Counter = ({ preCounter, setPreCounter, box, minimum }) => {
 
-    const handleChange = (type) => setPreCounter(prev => type === 'add' ? prev + 1 : prev - 1);
+    const handleChange = (type) => setPreCounter(prev => type === 'add' ? prev + minimum : prev - minimum);
     const handleBox = () => setPreCounter(box);
 
     return (
         <div className='counter'>
-            <div className='counterArrow' onClick={() => preCounter > 1 ? handleChange('res') : null}>
-                <Icons type='arrowleft' color={preCounter === 1 ? 'gray' : '#2C5469'} />
+            <div className='counterArrow' onClick={() => preCounter > minimum ? handleChange('res') : null}>
+                <Icons type='arrowleft' color={preCounter === minimum ? 'gray' : '#2C5469'} />
             </div>
 
             <p className='counterOne'>{preCounter}</p>

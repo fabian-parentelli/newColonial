@@ -10,8 +10,6 @@ const Cart = () => {
 
     const { removeAll } = useCartContext();
 
-    const [coupon, setCoupon] = useState('');
-
     return (
         <div className='cart'>
 
@@ -25,19 +23,9 @@ const Cart = () => {
                 </div>
 
                 <CartItems />
-
-                <label className='pgray' style={{ marginTop: '1rem' }}>
-                    ¿Tienes un cupón?
-                    <input
-                        type="text" value={coupon} onChange={(e) => setCoupon(e.target.value)}
-                        placeholder='Ingresa el cupón de descuentos'
-                    />
-                </label>
-
-                <p className='cartMessage'>El pago de la mercadería se hace al recibirla.</p>
             </section>
 
-            <CartOut coupon={coupon} />
+            <CartOut />
         </div>
     );
 };

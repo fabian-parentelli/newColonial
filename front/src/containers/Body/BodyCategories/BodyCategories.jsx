@@ -46,5 +46,6 @@ const categories = [
     { name: 'embutidos', icon: 'https://res.cloudinary.com/ddjldilsm/image/upload/v1755727524/stiff_ffjqiw_a1nkoi.png' },
     { name: 'dulces', icon: 'https://res.cloudinary.com/ddjldilsm/image/upload/v1755727525/sweet_rje169_oxkxtb.png' },
     { name: 'conservas', icon: 'https://res.cloudinary.com/ddjldilsm/image/upload/v1755727527/conservas_drr4oc_kscpp7.png' },
-    { name: 'panaderia', icon: 'https://res.cloudinary.com/ddjldilsm/image/upload/v1755727530/bread_tmwt58_k3abm7.png' }
+    { name: 'panaderia', icon: 'https://res.cloudinary.com/ddjldilsm/image/upload/v1755727530/bread_tmwt58_k3abm7.png' },
+    { name: 'encurtidos', icon: 'https://res.cloudinary.com/ddjldilsm/image/upload/v1755808859/Imagen3_akwd2k.png' }
 ];

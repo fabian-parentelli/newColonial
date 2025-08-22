@@ -1,10 +1,10 @@
 import './productsSection.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Counter from '../../../../../components/utils/Counter/Counter.jsx';
-import FavoriteAd from '../../../../../components/utils/FavoriteAd/FavoriteAd.jsx';
-import { useAlertContext } from '../../../../../context/AlertContext.jsx';
 import { useCartContext } from '../../../../../context/CartContext.jsx';
+import Counter from '../../../../../components/utils/Counter/Counter.jsx';
+import { useAlertContext } from '../../../../../context/AlertContext.jsx';
+import FavoriteAd from '../../../../../components/utils/FavoriteAd/FavoriteAd.jsx';
 
 const ProductsSection = ({ product }) => {
 
@@ -12,7 +12,9 @@ const ProductsSection = ({ product }) => {
     const { showAlert } = useAlertContext();
     const { addToCart, isInCart, updQuantity } = useCartContext();
 
-    const [preCounter, setPreCounter] = useState(1);
+    const [preCounter, setPreCounter] = useState(product.minimum);
+
+    useEffect(() => { setPreCounter(product.minimum) }, [product]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -46,7 +48,7 @@ const ProductsSection = ({ product }) => {
                 </div>
 
                 <div>
-                    <h2>{product.name} {product.description}</h2>
+                    <h2>{product.name} {product.description} {product.unit}</h2>
                     <p className='pcolorA'>{product.brand}</p>
                 </div>
 
@@ -61,7 +63,7 @@ const ProductsSection = ({ product }) => {
                 </div>
 
                 <div className='productCounter'>
-                    <Counter preCounter={preCounter} setPreCounter={setPreCounter} box={+product.box} />
+                    <Counter preCounter={preCounter} setPreCounter={setPreCounter} box={+product.box} minimum={product.minimum} />
                     <p>{product.unit}</p>
                 </div>
 

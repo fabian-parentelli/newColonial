@@ -18,7 +18,6 @@ const navMaster = [
     { icon: 'carrot', name: "Productos", link: 'products' },
     { icon: 'event', name: "Ordenes", link: 'order' },
     { icon: 'publicity', name: "Publicidad", link: 'ban' },
-    { icon: 'chef', name: "Recetas", link: 'rec' },
     { icon: 'image', name: "Imágenes", link: 'img' },
     { icon: 'setting', name: "Opciones", link: 'setting' },
 ];

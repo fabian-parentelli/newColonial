@@ -99,6 +99,8 @@ const ProductForDash = () => {
             <Modal open={modal} onClose={() => setModal(false)} btn={false}>
                 <ProdOppMod setModal={setModal} handleOpp={handleOpp} />
             </Modal>
+
+            <p className='pgray'>20-7 // 25-10 // 12-5</p>
         </div>
     );
 };

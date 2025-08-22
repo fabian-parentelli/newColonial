@@ -9,12 +9,12 @@ const ProductCardBtn = ({ product }) => {
     const handleCart = () => {
         const isCart = isInCart(product._id);
         if (isCart) {
-            updQuantity(product._id, isCart.quantity + 1);
+            updQuantity(product._id, isCart.quantity + product.minimum);
             showAlert(`Agargaste 1 ${product.name} al pedido`, 'info');
         } else {
             addToCart({
                 _id: product._id,
-                quantity: 1,
+                quantity: product.minimum,
                 price: product?.location && product?.location !== 'none'
                     ? Math.round(product.price - (product.price * product.discount / 100))
                     : product.price,
@@ -26,7 +26,7 @@ const ProductCardBtn = ({ product }) => {
 
     return (
         <button className="btn btnC" onClick={handleCart}>
-            Agregar
+            Agregar {product.minimum}
         </button>
     );
 };

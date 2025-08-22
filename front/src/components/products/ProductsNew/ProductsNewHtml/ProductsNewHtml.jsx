@@ -50,7 +50,8 @@ const ProductsNewHtml = ({ values, setValues, handleChange, handleSubmit, setMod
                     <label>
                         Categoría
                         <select name="category" value={values?.category || ''} onChange={handleChange} required>
-                            {config && config.categories.map(cat => (
+                            <option value="" hidden>Seleccionar</option>
+                            {config && config.categories.sort((a, b) => a.localeCompare(b)).map(cat => (
                                 <option key={cat} value={cat}>{cat}</option>
                             ))}
                         </select>
@@ -67,8 +68,8 @@ const ProductsNewHtml = ({ values, setValues, handleChange, handleSubmit, setMod
                     <label>
                         Familia
                         <select name="family" value={values?.family || ''} onChange={handleChange}>
-                            <option value="">Seleccionar familia</option>
-                            {config && config.families.map(fam => (
+                            <option value="" hidden>Seleccionar familia</option>
+                            {config && config.families.sort((a, b) => a.localeCompare(b)).map(fam => (
                                 <option key={fam} value={fam}>{fam}</option>
                             ))}
                         </select>
@@ -97,7 +98,8 @@ const ProductsNewHtml = ({ values, setValues, handleChange, handleSubmit, setMod
                     <label>
                         Marca
                         <select name="brand" value={values?.brand || ''} onChange={handleChange} required>
-                            {config && config.brands.map(brand => (
+                            <option value="" hidden>Seleccioanr</option>
+                            {config && config.brands.sort((a, b) => a.localeCompare(b)).map(brand => (
                                 <option key={brand} value={brand}>{brand}</option>
                             ))}
                         </select>
@@ -143,7 +145,8 @@ const ProductsNewHtml = ({ values, setValues, handleChange, handleSubmit, setMod
                     <label>
                         Sub-categoría
                         <select name="subCategory" value={values?.subCategory || ''} onChange={handleChange} required>
-                            {config && config.subCategories.map(cat => (
+                            <option value="" hidden>Seleccionar</option>
+                            {config && config.subCategories.sort((a, b) => a.localeCompare(b)).map(cat => (
                                 <option key={cat} value={cat}>{cat}</option>
                             ))}
                         </select>
