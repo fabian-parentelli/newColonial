@@ -25,7 +25,6 @@ const OrderTable = ({ orders, handleChange }) => {
                         <th>Número</th>
                         <th>Total</th>
                         <th>Productos</th>
-                        <th>Tipo de pago</th>
                         <th>Estado</th>
                         <th>Activa</th>
                     </tr>
@@ -60,8 +59,6 @@ const OrderTable = ({ orders, handleChange }) => {
                                     <Icons type="cart" />
                                 </Tooltip>
                             </td>
-
-                            <td>{typePay[ord.pay]}</td>
 
                             <td>
                                 {user.data.role !== 'user'

@@ -5,7 +5,6 @@ const orderCollection = 'orders';
 
 const orderSchema = new mongoose.Schema({
     userId: { type: String },
-    pay: { type: String },
     cart: [
         {
             pid: { type: String },
@@ -13,7 +12,6 @@ const orderSchema = new mongoose.Schema({
             price: { type: Number },
         }
     ],
-    coupon: { type: String },
     active: { type: Boolean, default: true },
     date: { type: Date, default: Date.now },
     status: { type: String, default: 'pending' },

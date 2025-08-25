@@ -1,5 +1,6 @@
 import { orderRepository, alertRepository } from '../repositories/index.repositories.js';
 import { OrderNotFound } from '../utils/custom-exceptions.utils.js';
+import { newOrderHtml } from '../utils/html/newOrderHtml.utils.js';
 import { isUserUtils } from "../utils/utilsServices/users.utils.js";
 import { sendEmail } from './email.service.js';
 
@@ -8,13 +9,13 @@ const postOrder = async (body) => {
     const isUser = await isUserUtils(user);
     const result = await orderRepository.postOrder({ ...rest, userId: isUser.userId });
     if (!result) throw new OrderNotFound('Error al crear la orden');
-    // await alertRepository.create({ eventId: result._id, userId: 'admin', type: 'newOrder' });
-    // const emailTo = {
-    //     to: user.email,
-    //     subject: 'Orden recibida',
-    //     html: await recoverPassword_HTML(user.recoverPassword)
-    // };
-    // await sendEmail(emailTo);
+    await alertRepository.create({ eventId: result._id, userId: 'admin', type: 'newOrder' });
+    const emailTo = {
+        to: user.email,
+        subject: 'Orden recibida',
+        html: await newOrderHtml(user, result)
+    };
+    await sendEmail(emailTo);
     return {
         status: 'success',
         result,
@@ -44,4 +45,4 @@ const putStatus = async (body) => {
     return { status: 'success', result };
 };
 
-export { postOrder, getOrders, putStatus }; 
+export { postOrder, getOrders, putStatus };

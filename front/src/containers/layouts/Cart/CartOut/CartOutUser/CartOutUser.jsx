@@ -38,7 +38,7 @@ const CartOutUser = ({ values, setValues }) => {
 
             {!values?._id &&
                 <input
-                    type="password" name="password" placeholder="Contraseña"
+                    type="password" name="password" placeholder="Escribe una contraseña"
                     value={values?.password || ''} onChange={handleChange} required
                 />
             }
