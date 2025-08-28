@@ -24,8 +24,9 @@ const postOrder = async (body) => {
     };
 };
 
-const getOrders = async ({ page = 1, userid, active, status }) => {
+const getOrders = async ({ page = 1, userid, active, status, id }) => {
     const query = {};
+    if (id) query._id = id;
     if (userid) query.userId = userid;
     if (status) query.status = status;
     if (active !== undefined) query.active = active;

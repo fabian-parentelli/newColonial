@@ -1,0 +1,13 @@
+.constructions {
+    margin-top: 70px;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.constructions img {
+    max-width: 800px;
+    width: 80%;
+    filter: drop-shadow(0px 0px 5px gray);
+}

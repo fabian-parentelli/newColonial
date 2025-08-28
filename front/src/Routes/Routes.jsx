@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useLoginContext } from "../context/LoginContext";
 import ScrollToTop from "../components/utils/ScrollToTop.jsx";
 import NavBar from "../containers/NavBar/NavBar.jsx";
 import Body from "../containers/Body/Body.jsx";
@@ -13,16 +12,14 @@ import Avatars from "../containers/layouts/Avatars/Avatars.jsx";
 import Product from "../containers/layouts/products/Product/Product.jsx";
 import ProdQuery from "../components/products/ProdQuery/ProdQuery.jsx";
 import ProductSectPage from "../containers/layouts/products/ProductSectPage/ProductSectPage.jsx";
-import Shipments from "../containers/layouts/Shipments/Shipments.jsx";
 import Bonus from "../containers/layouts/Bonus/Bonus.jsx";
 import ProductAll from "../containers/layouts/products/ProductAll/ProductAll.jsx";
 import Cart from "../containers/layouts/Cart/Cart.jsx";
 import BadgeBody from "../containers/layouts/BadgeBody/BadgeBody.jsx";
 import FallowUp from "../containers/layouts/FallowUp/FallowUp.jsx";
+import Constructions from "../containers/layouts/Constructions/Constructions.jsx";
 
 const WrapRoutes = () => {
-
-    const { user } = useLoginContext();
 
     return (
         <BrowserRouter>
@@ -41,11 +38,12 @@ const WrapRoutes = () => {
                     <Route path="/product/:id" element={<Product />} />
                     <Route path="/prodquery/:type/:name" element={<ProdQuery />} />
                     <Route path="/prodsect/:type" element={<ProductSectPage />} />
-                    <Route path="/shipments" element={<Shipments />} />
                     <Route path="/bonus" element={<Bonus />} />
                     <Route path="/all" element={<ProductAll />} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/fallowup/:id" element={<FallowUp />} />
+
+                    <Route path="/*" element={<Constructions />} />
                 </Routes>
 
                 <BadgeBody />

@@ -1,23 +1,31 @@
 import './fallowUp.css';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useAlertContext } from '../../../context/AlertContext';
+import { getOrdersApi } from '../../../helpers/order/getOrders.api';
+import OrderTable from '../../../components/orders/OrderTable/OrderTable';
 
 const FallowUp = () => {
-    
-    // http://localhost:5173/fallowup/68acf6772df60271dc15eb63
 
-    // trabajar en el estado de las ordenes ...
-    // trabajar en el estado de las ordenes ...
-    // trabajar en el estado de las ordenes ...
-    // trabajar en el estado de las ordenes ...
-    // trabajar en el estado de las ordenes ...
+    const { id } = useParams();
+    const { showAlert, setLoading } = useAlertContext();
 
-    // despés de esto ver la alerta al admin de la compra
-    // despés de esto ver la alerta al admin de la compra
-    // despés de esto ver la alerta al admin de la compra
-    // despés de esto ver la alerta al admin de la compra
-    
+    const [order, setOrder] = useState(null);
+
+    useEffect(() => {
+        const fetChData = async () => {
+            setLoading(true);
+            const response = await getOrdersApi({ id });
+            if (response.status === 'success') setOrder(response.result);
+            else showAlert(response.error, 'error');
+            setLoading(false);
+        }; fetChData();
+    }, []);
+
     return (
         <div className="fallowUp">
             <h2>Estado de tu pedido</h2>
+            {order && <OrderTable orders={order.docs} />}
         </div>
     );
 };

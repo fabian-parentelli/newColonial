@@ -5,8 +5,8 @@ const BodyToProducts = () => {
 
     return (
         <Link className='bodyToProducts' to={'/all'}>
-            <img className='bodyToProductsPc' src="https://res.cloudinary.com/dc7dw9qg3/image/upload/v1755034443/Banner_Pc_mxidi4.jpg" alt="img" />
-            <img className='bodyToProductsCel' src="https://res.cloudinary.com/dc7dw9qg3/image/upload/v1755034442/banner_cel_n2ggjn.jpg" alt="img" />
+            <img className='bodyToProductsPc' src="https://res.cloudinary.com/ddjldilsm/image/upload/v1756422494/img02_k2ab0v.jpg" alt="img" />
+            <img className='bodyToProductsCel' src="https://res.cloudinary.com/ddjldilsm/image/upload/v1756422494/img03_tlwd4e.jpg" alt="img" />
         </Link>
     );
 };

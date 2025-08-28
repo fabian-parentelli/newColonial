@@ -169,6 +169,7 @@ const ProdTabModUpd = ({ product, setModal, handleUpdtae }) => {
                     </button>
                 </div>
             </section>
+            <p className='pgray'>30-15 // 25-12 // 20-7 // 16-6 // 12-5</p>
         </form>
     );
 };

@@ -56,7 +56,7 @@ const ProductsNew = () => {
                 {modal.type === 'family' && <ProdNewFamilies setModal={setModal} setValues={setValues} />}
             </Modal>
 
-            <p className='pgray'>20-7 // 25-10 // 12-5</p>
+            <p className='pgray'>30-15 // 25-12 // 20-7 // 16-6 // 12-5</p>
         </div>
     )
 };

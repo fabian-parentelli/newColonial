@@ -56,25 +56,16 @@ const Footer = () => {
 export default Footer;
 
 const columnA = {
-    title: 'CataWeb',
+    title: 'Secciónes',
     content: [
         { text: 'Avatares', link: '/avatars' },
-        { text: 'Qiénes somos', link: '/us' },
-        { text: 'Videos tutoriales ', link: '/videotut' },
-        { text: 'Noticias y Avances', link: '/ournews' },
-        { text: 'Próximamente en UnderPass', link: '/future' },
-        { text: 'Preguntas frecuentes', link: '/asked' },
     ]
 };
 
 const columnB = {
     title: 'Plataforma',
     content: [
-        { text: 'Crear eventos', link: '/newevents' },
-        { text: 'Presets para eventos', link: '/presets' },
-        { text: 'Contacto', link: '/contact' },
-        { text: 'Logotipos', link: '/logstype' },
-        { text: 'Precios', link: '/prices' },
+        { text: '', link: '/' },
     ]
 };
 
@@ -83,7 +74,7 @@ const columnC = {
     content: [
         { text: 'Iniciar sesión', link: '/login' },
         { text: 'Registrate', link: '/register' },
-        { text: 'Configuración', link: '/panel' },
+        { text: 'Configuración', link: '/dashboard' },
         { text: 'Alertas', link: '/returns' },
         { text: 'Mensajes', link: '/returns' },
         { text: 'Actividad', link: '/history' },
@@ -92,15 +83,8 @@ const columnC = {
 };
 
 const columnD = {
-    title: 'Secciónes',
+    title: 'Productos',
     content: [
-        { text: 'UnderPass', link: '/' },
-        { text: 'UnderEvents', link: '/events' },
-        { text: 'UnderMarkets', link: '/products' },
-        { text: 'UnderSites', link: '/sites' },
-        { text: 'UnderShifts', link: '/shifts' },
-        { text: 'UnderNews', link: '/news' },
-        { text: 'UnderPay', link: '/pay' },
-        { text: 'UnderAd', link: '/ads' },
+        { text: '', link: '/' },
     ]
 };

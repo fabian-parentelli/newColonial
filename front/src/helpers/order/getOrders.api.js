@@ -5,6 +5,7 @@ const getOrdersApi = async (obj) => {
     let urlData = `${url}/api/order?`;
 
     if (obj.page) urlData += `page=${obj.page}&`;
+    if (obj.id) urlData += `id=${obj.id}&`;
     if (obj.userId) urlData += `userid=${obj.userId}&`;
     if (obj.status) urlData += `status=${obj.status}&`;
     if (obj.active !== undefined) urlData += `active=${obj.active}&`;
