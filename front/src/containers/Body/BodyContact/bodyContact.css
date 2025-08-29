@@ -1,0 +1,56 @@
+.bodyContact {
+    max-width: 800px;
+    width: 90%;
+    margin: 4rem auto;
+    background-color: gainsboro;
+    padding: 1rem;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.bodyContact h3 {
+    color: var(--colorA);
+    padding-left: 1.6rem;
+}
+
+.bodyContact section {
+    display: flex;
+    justify-content: space-around;
+}
+
+.bodyContact section div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bodyContact section div label {
+    width: 100%;
+    font-size: 12px;
+    color: gray;
+}
+
+.bodyContact section textarea {
+    width: 60%;
+}
+
+@media (max-width: 769px) {
+
+    .bodyContact section {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .bodyContact section textarea {
+        width: 100%;
+        min-height: 200px;
+    }
+
+    .bodyContact h3 {
+        padding-left: 0;
+    }
+}

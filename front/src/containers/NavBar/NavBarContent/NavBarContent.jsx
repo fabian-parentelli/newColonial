@@ -22,7 +22,6 @@ const NavBarContent = () => {
             <Link to={'/'} className='navBarContentA'>
                 <img src='/logo.png' alt="img" />
                 <h1 className='navBarContentPc'>La Colonial</h1>
-                <h1 className='navBarContentCel'>P<span>M</span></h1>
             </Link>
 
             <section className='navBarContentSect'>

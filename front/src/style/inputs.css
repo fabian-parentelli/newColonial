@@ -41,7 +41,7 @@ select:focus {
 textarea {
     width: 100%;
     border-radius: 6px;
-    border: solid 1px gray;
+    border: solid 1px rgba(128, 128, 128, 0);
     padding: 5px;
     resize: none;
 }

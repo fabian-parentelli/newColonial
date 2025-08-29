@@ -18,6 +18,7 @@ import Cart from "../containers/layouts/Cart/Cart.jsx";
 import BadgeBody from "../containers/layouts/BadgeBody/BadgeBody.jsx";
 import FallowUp from "../containers/layouts/FallowUp/FallowUp.jsx";
 import Constructions from "../containers/layouts/Constructions/Constructions.jsx";
+import FavoritesPage from "../containers/layouts/FavoritesPage/FavoritesPage.jsx";
 
 const WrapRoutes = () => {
 
@@ -42,6 +43,7 @@ const WrapRoutes = () => {
                     <Route path="/all" element={<ProductAll />} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/fallowup/:id" element={<FallowUp />} />
+                    <Route path="/favorites" element={<FavoritesPage />} />
 
                     <Route path="/*" element={<Constructions />} />
                 </Routes>

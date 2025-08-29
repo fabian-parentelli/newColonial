@@ -1,0 +1,17 @@
+.favoritesPage {
+    margin-top: 70px;
+    min-height: 75vh;
+}
+
+.favoritesPage h2 {
+    padding: 1rem 0 2rem 0;
+    text-align: center;
+    color: var(--colorB);
+}
+
+.favoritesPage .favoritesPageProd {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}

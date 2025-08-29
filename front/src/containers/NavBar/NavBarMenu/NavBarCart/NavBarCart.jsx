@@ -1,18 +1,18 @@
 import './navBarCart.css';
 import { Link } from 'react-router-dom';
 import Icons from '../../../../components/Icons/Icons';
+import { useCartContext } from '../../../../context/CartContext';
 import Tooltip from '../../../../components/tools/Tooltip/Tooltip';
 
 const NavBarCart = () => {
 
-    // Trabajar el carrito
-    const cart = 0;
+    const { totalCart } = useCartContext();
 
     return (
         <div className='navBarCart'>
             <div>
                 <p className='pgray'>Saldo</p>
-                <p className='colorB'>${cart}</p>
+                <p className='colorB'>${totalCart()}</p>
             </div>
 
             <Link to={'/cart'}>

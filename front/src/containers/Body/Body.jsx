@@ -5,6 +5,7 @@ import BodyBanner from './BodyBanner/BodyBanner';
 import BodyCategories from './BodyCategories/BodyCategories';
 import BodyToProducts from './BodyToProducts/BodyToProducts';
 import ProdSections from '../../components/products/ProdSections/ProdSectuons';
+import BodyContact from './BodyContact/BodyContact';
 
 const Body = () => {
 
@@ -18,7 +19,9 @@ const Body = () => {
             <ProdSections time={500} />
             <BodyToProducts />
             <ProdSections type='launch' time={1000} />
-            <button className='btn btnA btnTop' onClick={() => navigate('/all')}>Ver Productos</button>
+            <button 
+                className='btn btnA btnTop' onClick={() => navigate('/all')}>Ver Productos</button>
+            <BodyContact />
         </div>
     );
 };

@@ -13,6 +13,12 @@ function typeActivity(activity) {
                 icon: 'event', activity: '', alert: 'Orden nueva'
             }
         },
+        
+        'postMessage': () => {
+            return {
+                icon: 'message', activity: '', alert: 'Nuevo mensaje'
+            }
+        },
 
         'default': () => { return { icon: 'carrot', activity: 'Actividad no definida' } },
     };
