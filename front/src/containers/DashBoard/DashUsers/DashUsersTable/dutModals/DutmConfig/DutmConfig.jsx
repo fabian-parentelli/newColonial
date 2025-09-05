@@ -2,8 +2,6 @@ import './dutmConfig.css';
 
 const DutmConfig = ({ user }) => {
 
-    console.log(user);
-
     return (
         <div className='dutmConfig column'>
             <h3>Configuración de {user.name}</h3>

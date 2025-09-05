@@ -1,7 +1,7 @@
 import './productCard.css';
 import { Link } from 'react-router-dom';
-import FavoriteAd from '../../utils/FavoriteAd/FavoriteAd';
 import ProductCardBtn from './ProductCardBtn';
+import FavoriteAd from '../../utils/FavoriteAd/FavoriteAd';
 
 const ProductCard = ({ product }) => {
     

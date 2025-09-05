@@ -13,7 +13,8 @@ const getProductsApi = async (obj) => {
     if (obj.notId) urlData += `notid=${obj.notId}&`;
     if (obj.location) urlData += `location=${obj.location}&`;
     if (obj.ids) urlData += `ids=${obj.ids}&`;
-
+    
+    if (obj.select !== undefined) urlData += `select=${obj.select}&`;
     if (obj.active !== undefined) urlData += `active=${obj.active}&`;
 
     if (urlData.endsWith('&')) urlData = urlData.slice(0, -1);

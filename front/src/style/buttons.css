@@ -55,3 +55,13 @@
 .btnD:hover {
     background-color: #8080803d;
 }
+
+.btnE {
+    background-color: green;
+    color: var(--colorC);
+    transition: .3s ease-in-out;
+}
+
+.btnE:hover {
+    background-color: rgb(0, 107, 0);
+}

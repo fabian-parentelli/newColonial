@@ -9,8 +9,8 @@ const ProductCardBtn = ({ product }) => {
     const handleCart = () => {
         const isCart = isInCart(product._id);
         if (isCart) {
-            updQuantity(product._id, isCart.quantity + product.minimum);
-            showAlert(`Agargaste 1 ${product.name} al pedido`, 'info');
+            updQuantity(product, isCart.quantity + product.minimum);
+            showAlert(`Agargaste ${product.minimum} ${product.name} al pedido`, 'info');
         } else {
             addToCart({
                 _id: product._id,

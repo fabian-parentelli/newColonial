@@ -11,9 +11,14 @@ const OrderTableProduct = ({ product }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await getProductsApi({ ids: product.cart.map(pro => pro.pid) });
-            if (response.status === 'success') setProducts(response.result.docs);
-            else showAlert(response.error, 'error');
+            const response = await getProductsApi({ ids: product.cart.map(pro => pro.pid), limit: 50 });
+            if (response.status === 'success') {
+                const data = { ...product };
+                data.cart.forEach(car => {
+                    car.product = response.result.docs.find(item => item._id === car.pid)
+                });
+                setProducts(data);
+            } else showAlert(response.error, 'error');
         }; fetchData();
     }, []);
 
@@ -32,22 +37,22 @@ const OrderTableProduct = ({ product }) => {
                 </thead>
 
                 <tbody>
-                    {product.cart.map((cart, ind) => (
+                    {products && products.cart.map((cart, ind) => (
                         <tr key={ind}>
 
                             <td>
-                                <ImgHover img={products[ind].img} border={false} />
+                                <ImgHover img={cart.product.img} border={false} />
                             </td>
 
                             <td className="pcolorA">
-                                <p>{products[ind].name}</p>
-                                <p>{products[ind].brand}</p>
-                                <p>{products[ind].description}</p>
+                                <p>{cart.product.name}</p>
+                                <p>{cart.product.brand}</p>
+                                <p>{cart.product.description}</p>
                             </td>
 
-                            <td>{cart.quantity}</td>
-                            <td>${cart.price}</td>
-                            <td>${cart.price * cart.quantity}</td>
+                            <td>{cart?.quantity}</td>
+                            <td>${cart?.price}</td>
+                            <td>${cart?.price * cart?.quantity}</td>
                         </tr>
                     ))}
                 </tbody>

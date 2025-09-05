@@ -20,6 +20,7 @@ const navMaster = [
     { icon: 'carrot', name: "Productos", link: 'products' },
     { icon: 'event', name: "Ordenes", link: 'order' },
     { icon: 'message', name: "Mensajes", link: 'message' },
+    { icon: 'cart', name: "Vender", link: 'sale' },
     { icon: 'publicity', name: "Publicidad", link: 'ban' },
     { icon: 'image', name: "Imágenes", link: 'img' },
     { icon: 'setting', name: "Opciones", link: 'setting' },

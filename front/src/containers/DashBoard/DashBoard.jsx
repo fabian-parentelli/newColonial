@@ -11,6 +11,7 @@ import DashProducts from './DashProducts/Dashproducts.jsx';
 import DashBanner from './DashBanner/DashBanner.jsx';
 import DashOrders from './DashOrders/DashOrders.jsx';
 import DashMessage from './DashMessage/DashMessage.jsx';
+import DashSale from './DashSale/DashSale.jsx';
 
 const DashBoard = () => {
 
@@ -36,6 +37,7 @@ const DashBoard = () => {
                 {vewPanel === 'ban' && <DashBanner />}
                 {vewPanel === 'order' && <DashOrders />}
                 {vewPanel === 'message' && <DashMessage />}
+                {vewPanel === 'sale' && <DashSale />}
             </section>
 
         </div>

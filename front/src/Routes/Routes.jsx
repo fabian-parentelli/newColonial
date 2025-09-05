@@ -19,6 +19,7 @@ import BadgeBody from "../containers/layouts/BadgeBody/BadgeBody.jsx";
 import FallowUp from "../containers/layouts/FallowUp/FallowUp.jsx";
 import Constructions from "../containers/layouts/Constructions/Constructions.jsx";
 import FavoritesPage from "../containers/layouts/FavoritesPage/FavoritesPage.jsx";
+import Lists from "../containers/layouts/Lists/Lists.jsx";
 
 const WrapRoutes = () => {
 
@@ -44,6 +45,7 @@ const WrapRoutes = () => {
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/fallowup/:id" element={<FallowUp />} />
                     <Route path="/favorites" element={<FavoritesPage />} />
+                    <Route path="/list" element={<Lists />} />
 
                     <Route path="/*" element={<Constructions />} />
                 </Routes>

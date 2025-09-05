@@ -65,7 +65,7 @@ const columnA = {
 const columnB = {
     title: 'Plataforma',
     content: [
-        { text: '', link: '/' },
+        { text: 'Lista de precios', link: '/list' },
     ]
 };
 

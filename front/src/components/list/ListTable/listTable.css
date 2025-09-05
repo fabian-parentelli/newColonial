@@ -1,0 +1,43 @@
+.listTable {
+    width: 1100px;
+    height: 100%;
+    max-height: 1550px;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.listTable .listTableTitle {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 95%;
+    margin: auto;
+}
+
+.listTable .listTableTitle div {
+    padding-bottom: 1rem;
+}
+
+.listTable .listTableTitle div h3 {
+    padding-top: 1rem;
+    color: var(--colorA);
+    font-size: 2rem;
+}
+
+.listTable .listTableTitle img {
+    width: 100px;
+    position: absolute;
+    right: 5px;
+    top: 2px;
+}
+
+.listTable .listTableProd {
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: .4rem;
+}
+
+.listTable .listTableProd p {
+    font-size: 12px;
+}

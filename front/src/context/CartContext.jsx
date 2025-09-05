@@ -17,7 +17,7 @@ const CartProvider = ({ children }) => {
     const isInCart = (id) => cart.find(item => item._id === id);
 
     const updQuantity = (product, quant) => {
-        const data = [...cart];
+        const data = [...cart];      
         const index = data.findIndex(item => item._id === product._id);
         if (index !== -1) {
             data[index].quantity = quant;
