@@ -1,0 +1,23 @@
+.dashSale {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dashSale .dashSaleSect {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+.dashSale .dashSaleTable {
+    display: flex;
+    gap: 1rem;
+}
+
+@media (max-width: 767px) {
+    
+    .dashSale .dashSaleTable {
+        flex-direction: column;
+    }
+}

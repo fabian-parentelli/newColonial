@@ -1,15 +1,24 @@
 import { orderRepository, alertRepository } from '../repositories/index.repositories.js';
 import { OrderNotFound } from '../utils/custom-exceptions.utils.js';
 import { newOrderHtml } from '../utils/html/newOrderHtml.utils.js';
+import { isCustomer } from '../utils/utilsServices/customer.utils.js';
 import { isUserUtils } from "../utils/utilsServices/users.utils.js";
 import { sendEmail } from './email.service.js';
+
+const postSale = async (body) => {
+    const { user, ...rest } = body;
+    const userId = await isCustomer(user);
+    const result = await orderRepository.postOrder({ ...rest, userId, type: 'sale' });
+    if (!result) throw new OrderNotFound('Error al crear la orden');
+    return { status: 'success' };
+};
 
 const postOrder = async (body) => {
     const { user, ...rest } = body;
     const isUser = await isUserUtils(user);
-    const result = await orderRepository.postOrder({ ...rest, userId: isUser.userId });
+    const result = await orderRepository.postOrder({ ...rest, userId: isUser.userId, type: 'order' });
     if (!result) throw new OrderNotFound('Error al crear la orden');
-    await alertRepository.create({ eventId: result._id, userId: 'admin', type: 'newOrder' });
+    // await alertRepository.create({ eventId: result._id, userId: 'admin', type: 'newOrder' });
     const emailTo = {
         to: user.email,
         subject: 'Orden recibida',
@@ -46,4 +55,17 @@ const putStatus = async (body) => {
     return { status: 'success', result };
 };
 
-export { postOrder, getOrders, putStatus };
+// borrar -----------------------------------------------
+const getBorrar = async () => {
+    const orders = await orderRepository.getOrders({}, 2) 
+    if(orders) {
+        for (const order of orders.docs) {
+            if(order.customer) delete order.customer;
+            order.type = 'order'
+            await orderRepository.update(order);
+        }
+    }
+    return { status: 'success' };
+};
+
+export { postSale, postOrder, getOrders, putStatus, getBorrar };

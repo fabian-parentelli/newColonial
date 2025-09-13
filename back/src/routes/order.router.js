@@ -4,7 +4,12 @@ import { passportEnum } from '../config/enums.config.js';
 
 export default class OrderRouter extends Router {
     init() {
+        this.post('/sale', ['ADMIN', 'MASTER'], passportEnum.JWT, orderController.postSale);
         this.post('/', ['PUBLIC'], passportEnum.NOTHING, orderController.postOrder);
+        
+        // borrar ---------------------------
+        this.get('/borrar', ['PUBLIC'], passportEnum.NOTHING, orderController.getBorrar);
+        
         this.get('/', ['USER', 'ADMIN', 'MASTER'], passportEnum.JWT, orderController.getOrders);
         this.put('/', ['ADMIN', 'MASTER'], passportEnum.JWT, orderController.putStatus);
     };

@@ -21,6 +21,7 @@
     text-align: center;
     color: var(--colorA);
     font-weight: 600;
+    user-select: none;
 }
 
 .counter .counterCounter {

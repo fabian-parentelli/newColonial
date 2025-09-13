@@ -39,7 +39,10 @@ const OrderTable = ({ orders, handleChange }) => {
                             {user.data.role !== 'user' &&
                                 <td
                                     className="tdBack"
-                                    onClick={() => setModal({ open: true, data: ord.userId, type: 'user' })}
+                                    onClick={() => setModal({
+                                        open: true, data: ord.userId,
+                                        type: ord.type !== 'sale' ? 'user' : 'customer'
+                                    })}
                                 >
                                     <Tooltip text="Ver usuario" position="right">
                                         <Icons type="user" />
@@ -84,6 +87,7 @@ const OrderTable = ({ orders, handleChange }) => {
             <Modal open={modal.open} onClose={() => setModal({ open: false, data: null, type: null })}>
                 {modal.type === 'cart' && <OrderTableProduct product={modal.data} />}
                 {modal.type === 'user' && <UserComp uid={modal.data} />}
+                {modal.type === 'customer' && <p>Customer</p>}
             </Modal>
         </div>
     );
