@@ -6,7 +6,10 @@ const Sidebar = ({ user, navItems, setVewPanel }) => {
 
     const [active, setActive] = useState(1);
 
-    const goto = (index, link) => { setActive(index); setVewPanel(link) };
+    const goto = (index, link) => {
+        setActive(index);
+        setVewPanel(link)
+    };
 
     return (
         <aside className="sidebar-4">

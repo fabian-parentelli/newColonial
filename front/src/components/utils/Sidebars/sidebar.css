@@ -21,8 +21,10 @@
     border-radius: 0 12px 12px 0;
 }
 
-.sidebar-4:hover {
-    width: 260px;
+@media (min-width: 767px) {
+    .sidebar-4:hover {
+        width: 260px;
+    }
 }
 
 .sidebar-4 .inner {
@@ -48,6 +50,7 @@
     letter-spacing: 2px;
     color: var(--colorC);
 }
+
 .sidebar-4 .header img {
     width: 40px;
     height: 40px;
