@@ -36,14 +36,9 @@ const CartOutUser = ({ values, setValues }) => {
                 value={values?.location?.address || ''} onChange={handleLocation}
             />
 
-            {!values?._id &&
-                <input
-                    type="password" name="password" placeholder="Escribe una contraseña"
-                    value={values?.password || ''} onChange={handleChange} required
-                />
-            }
         </div>
     );
 };
 
 export default CartOutUser;
+

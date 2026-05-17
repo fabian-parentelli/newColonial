@@ -12,5 +12,6 @@ export default class OrderRouter extends Router {
         
         this.get('/', ['USER', 'ADMIN', 'MASTER'], passportEnum.JWT, orderController.getOrders);
         this.put('/', ['ADMIN', 'MASTER'], passportEnum.JWT, orderController.putStatus);
+        this.delete('/:id/:pass', ['ADMIN', 'MASTER'], passportEnum.JWT, orderController.deleteOrder);
     };
 };

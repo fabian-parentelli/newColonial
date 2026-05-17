@@ -5,13 +5,13 @@ import { useAlertContext } from "../../../context/AlertContext";
 import { getProductsApi } from "../../../helpers/product/getProducts.api.js";
 
 const OrderTableProduct = ({ product }) => {
-
+    
     const { showAlert } = useAlertContext();
     const [products, setProducts] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await getProductsApi({ ids: product.cart.map(pro => pro.pid), limit: 50 });
+            const response = await getProductsApi({ ids: product.cart.map(pro => pro.pid), limit: 100 });
             if (response.status === 'success') {
                 const data = { ...product };
                 data.cart.forEach(car => {
@@ -41,13 +41,13 @@ const OrderTableProduct = ({ product }) => {
                         <tr key={ind}>
 
                             <td>
-                                <ImgHover img={cart.product.img} border={false} />
+                                <ImgHover img={cart?.product?.img} border={false} />
                             </td>
 
                             <td className="pcolorA">
-                                <p>{cart.product.name}</p>
-                                <p>{cart.product.brand}</p>
-                                <p>{cart.product.description}</p>
+                                <p>{cart?.product?.name}</p>
+                                <p>{cart?.product?.brand}</p>
+                                <p>{cart?.product?.description}</p>
                             </td>
 
                             <td>{cart?.quantity}</td>

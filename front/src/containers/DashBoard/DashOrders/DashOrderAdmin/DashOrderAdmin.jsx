@@ -3,6 +3,7 @@ import Pager from "../../../../components/tools/Pager/Pager";
 import { useAlertContext } from "../../../../context/AlertContext";
 import { getOrdersApi } from "../../../../helpers/order/getOrders.api.js";
 import OrderTable from "../../../../components/orders/OrderTable/OrderTable";
+import { deleteOrderApi } from "../../../../helpers/order/deleteOrder.api.js";
 import { putOrderStatusApi } from "../../../../helpers/order/putOrderState.api.js";
 import OrderFilter from "../../../../components/orders/OrderFilter/OrderFilter.jsx";
 
@@ -36,10 +37,21 @@ const DashOrderAdmin = () => {
         setLoading(false);
     };
 
+    const handleDelete = async (values) => {
+        const response = await deleteOrderApi(values);
+        if(response.status === 'success') {
+            const datas = { ...orders };
+            const index = datas.docs.findIndex(doc => doc._id === values.id);
+            datas.docs.splice(index, 1);
+            setOrders(datas);
+            return true
+        } else showAlert(response.error, 'error');
+    };
+
     return (
         <div className="column">
             <OrderFilter query={query} setQuery={setQuery} />
-            {orders && <OrderTable orders={orders.docs} handleChange={handleChange} />}
+            {orders && <OrderTable orders={orders.docs} handleChange={handleChange} handleDelete={handleDelete} />}
             <Pager docs={orders} setQuery={setQuery} />
         </div>
     );

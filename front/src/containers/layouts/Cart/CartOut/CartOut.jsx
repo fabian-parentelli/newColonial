@@ -24,13 +24,12 @@ const CartOut = () => {
         setLoading(true);
         const { typePay, ...rest } = values;
         const query = {
-            user: rest,
             pay: typePay,
             cart: cart.map(prod => {
                 return { pid: prod._id, quantity: prod.quantity, price: prod.price }
             })
         };
-        const response = await postOrderApi(query);
+        const response = await postOrderApi({ ...query, user: rest });
         if (response.status === 'success') {
             if (!response.isUser) {
                 localStorage.setItem('token', response.accesToken);

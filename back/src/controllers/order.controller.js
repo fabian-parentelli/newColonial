@@ -41,6 +41,15 @@ const putStatus = async (req, res) => {
     };
 };
 
+const deleteOrder = async (req, res) => {
+    try {
+        const result = await orderService.deleteOrder({ ...req.params }, { ...req.user });
+        if (result) return res.sendSuccess(result);
+    } catch (error) {
+        if (error instanceof OrderNotFound) return res.sendClientError(error.message);
+        res.sendServerError(error.message);
+    };
+};
 
 // Borrar --------------------------------------------------------------
 const getBorrar = async (req, res) => {
@@ -53,4 +62,4 @@ const getBorrar = async (req, res) => {
     };
 };
 
-export { postSale, postOrder, getOrders, putStatus, getBorrar };
+export { postSale, postOrder, getOrders, putStatus, deleteOrder, getBorrar };

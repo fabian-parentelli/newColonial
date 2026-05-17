@@ -6,8 +6,9 @@ import Tooltip from "../../tools/Tooltip/Tooltip";
 import OrderTableProduct from "./OrderTableProduct";
 import UserComp from "../../users/UserComp/UserComp";
 import { useLoginContext } from "../../../context/LoginContext";
+import TableOrderDelete from "./OrderTableDelete";
 
-const OrderTable = ({ orders, handleChange }) => {
+const OrderTable = ({ orders, handleChange, handleDelete }) => {
 
     const { user } = useLoginContext();
     const [modal, setModal] = useState({ open: false, data: null, type: null });
@@ -27,6 +28,9 @@ const OrderTable = ({ orders, handleChange }) => {
                         <th>Productos</th>
                         <th>Estado</th>
                         <th>Activa</th>
+                        {user.data.role !== 'user' &&
+                            <th>Eliminar</th>
+                        }
                     </tr>
                 </thead>
 
@@ -79,27 +83,37 @@ const OrderTable = ({ orders, handleChange }) => {
                             <td style={{ color: ord.active ? 'green' : 'red', fontWeight: '600' }} >
                                 {ord.active ? 'SI' : 'NO'}
                             </td>
+
+                            <td
+                                onClick={() => setModal({ open: true, data: ord._id, type: 'delete' })}
+                                className="tdBack"
+                            >
+                                <Tooltip text="Eliminar" position="right">
+                                    <Icons type="delete" />
+                                </Tooltip>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
 
-            <Modal open={modal.open} onClose={() => setModal({ open: false, data: null, type: null })}>
+            <Modal
+                open={modal.open}
+                onClose={() => setModal({ open: false, data: null, type: null })}
+                btn={modal.type !== 'delete' ? true : false}
+            >
                 {modal.type === 'cart' && <OrderTableProduct product={modal.data} />}
                 {modal.type === 'user' && <UserComp uid={modal.data} />}
                 {modal.type === 'customer' && <p>Customer</p>}
+                {modal.type === 'delete' &&
+                    <TableOrderDelete id={modal.data} handleDelete={handleDelete} setModal={setModal} />
+                }
             </Modal>
         </div>
     );
 };
 
 export default OrderTable;
-
-const typePay = {
-    transfer: 'Transferencia',
-    cash: 'Efectivo',
-    card: 'Debito/crédito'
-};
 
 const status = {
     pending: 'Pendiente',
