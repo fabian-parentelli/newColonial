@@ -21,26 +21,11 @@ const CartOut = () => {
 
     const handleSubmit = async () => {
         if (!user.logged) return setModal({ open: true });
-
         setLoading(true);
-        // const { typePay, ...rest } = values;
-        // const query = {
-        //     pay: typePay,
-        //     cart: cart.map(prod => {
-        //         return { pid: prod._id, quantity: prod.quantity, price: prod.price }
-        //     })
-        // };
-
-
-        return; // Borrar <=====
-
-
-        const response = await postOrderApi({ ...query, user: rest });
-        console.log(response);
+        const response = await postOrderApi({
+            cart: cart.map(doc => ({ pid: doc._id, quantity: doc.quantity, price: doc.price }))
+        });
         if (response.status === 'success') {
-
-
-
             removeAll();
             navigate(`/fallowup/${response.result._id}`);
         } else showAlert(response.error, 'error');
@@ -55,7 +40,7 @@ const CartOut = () => {
 
             <button className='btn btnA' disabled={loading} onClick={handleSubmit}>
                 {loading
-                    ? <SpinnerH />
+                    ? <SpinnerH color='white' />
                     : !user.logged ? 'Iniciar sesión' : 'Enviar pedido'
                 }
             </button>

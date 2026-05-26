@@ -1,12 +1,9 @@
 import { useState } from "react";
-import Icons from "../../Icons/Icons";
-import Copy from "../../tools/Copy/Copy";
-import Modal from "../../tools/Modal/Modal";
-import Tooltip from "../../tools/Tooltip/Tooltip";
 import OrderTableProduct from "./OrderTableProduct";
-import UserComp from "../../users/UserComp/UserComp";
-import { useLoginContext } from "../../../context/LoginContext";
-import TableOrderDelete from "./OrderTableDelete";
+import TableOrderDelete from "./OrderTableDelete.jsx";
+import UserComp from "../../users/UserComp/UserComp.jsx";
+import { useLoginContext } from "@/context/LoginContext.jsx";
+import { Icons, Copy, Modal, Tooltip } from 'fara-comp-react';
 
 const OrderTable = ({ orders, handleChange, handleDelete }) => {
 
@@ -28,7 +25,7 @@ const OrderTable = ({ orders, handleChange, handleDelete }) => {
                         <th>Productos</th>
                         <th>Estado</th>
                         <th>Activa</th>
-                        {user.data.role !== 'user' &&
+                        {handleDelete && user.data.role !== 'user' &&
                             <th>Eliminar</th>
                         }
                     </tr>
@@ -49,12 +46,12 @@ const OrderTable = ({ orders, handleChange, handleDelete }) => {
                                     })}
                                 >
                                     <Tooltip text="Ver usuario" position="right">
-                                        <Icons type="user" />
+                                        <Icons type="user" size='20px' />
                                     </Tooltip>
                                 </td>
                             }
 
-                            <td><Copy data={ord._id} position="right" /></td>
+                            <td><Copy text={ord._id} /></td>
 
                             <td>${ord.cart.reduce((acc, item) => acc + (item.price * item.quantity), 0)}</td>
 
@@ -63,12 +60,12 @@ const OrderTable = ({ orders, handleChange, handleDelete }) => {
                                 onClick={() => setModal({ open: true, data: ord, type: 'cart' })}
                             >
                                 <Tooltip text="Ver Productos" position="right">
-                                    <Icons type="cart" />
+                                    <Icons type="cart" size='20px' />
                                 </Tooltip>
                             </td>
 
                             <td>
-                                {user.data.role !== 'user'
+                                {handleChange && user.data.role !== 'user'
                                     ? <select name="status" value={ord.status} onChange={(e) => handleChange(ord._id, e.target.value)}>
                                         <option value="pending">Pendiente</option>
                                         <option value="preparing">Preparando</option>
@@ -84,14 +81,16 @@ const OrderTable = ({ orders, handleChange, handleDelete }) => {
                                 {ord.active ? 'SI' : 'NO'}
                             </td>
 
-                            <td
-                                onClick={() => setModal({ open: true, data: ord._id, type: 'delete' })}
-                                className="tdBack"
-                            >
-                                <Tooltip text="Eliminar" position="right">
-                                    <Icons type="delete" />
-                                </Tooltip>
-                            </td>
+                            {handleDelete &&
+                                <td
+                                    onClick={() => setModal({ open: true, data: ord._id, type: 'delete' })}
+                                    className="tdBack"
+                                >
+                                    <Tooltip text="Eliminar" position="right">
+                                        <Icons type="delete" size='20px' />
+                                    </Tooltip>
+                                </td>
+                            }
                         </tr>
                     ))}
                 </tbody>

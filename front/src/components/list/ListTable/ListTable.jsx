@@ -7,9 +7,9 @@ const ListTable = ({ products, printList }) => {
 
             <section className='listTableTitle'>
                 <div>
-                    <h3>La colonila</h3>
+                    <h3>La colonial</h3>
                     <p className='pgray'>11-5943-7955</p>
-                    <p className='pgray'>https://lacolonial.shop</p>
+                    <p className='pgray'>https://lacolonial.cloud</p>
                 </div>
                 <img src="https://res.cloudinary.com/ddjldilsm/image/upload/v1757103727/codigoqr_et8o4l.png" alt="qr" />
             </section>
