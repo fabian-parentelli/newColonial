@@ -13,3 +13,11 @@
     --colorXX: #F4B942;
     --colorRR: #ff230f;
 }
+
+.cola {
+    color: var(--colorA);
+}
+
+.colb {
+    color: var(--colorB);
+}

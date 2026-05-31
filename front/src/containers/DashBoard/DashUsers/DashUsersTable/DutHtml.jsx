@@ -1,13 +1,11 @@
 import { useState } from "react";
-import Icons from "../../../../components/Icons/Icons";
-import Copy from "../../../../components/tools/Copy/Copy";
-import DutmAvatar from "./dutModals/DutmAvatar/DutmAvatar";
-import DutmConfig from "./dutModals/DutmConfig/DutmConfig";
-import Modal from "../../../../components/tools/Modal/Modal";
-import Tooltip from "../../../../components/tools/Tooltip/Tooltip";
-import ImgHover from "../../../../components/tools/ImgHover/ImgHover";
+import DutmData from "./dutModals/DutmData.jsx";
+import DutmDelete from "./dutModals/DutmDelete.jsx";
+import DutmAvatar from "./dutModals/DutmAvatar/DutmAvatar.jsx";
+import DutmConfig from "./dutModals/DutmConfig/DutmConfig.jsx";
+import { Icons, Copy, Modal, Tooltip, ImgHover } from 'fara-comp-react';
 
-const DutHtml = ({ users, handleChange }) => {
+const DutHtml = ({ users, handleChange, handleUpdate, handleDelete }) => {
 
     const [modal, setModal] = useState({ open: false, data: null, type: null });
 
@@ -15,7 +13,7 @@ const DutHtml = ({ users, handleChange }) => {
         <div className='dutHtml'>
             <table>
                 <thead>
-                    <tr>
+                    <tr className="pwhite">
                         <th>Img</th>
                         <th>Nombre</th>
                         <th>email</th>
@@ -23,6 +21,7 @@ const DutHtml = ({ users, handleChange }) => {
                         <th>Config</th>
                         <th>Datos</th>
                         <th>Activo</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,11 +39,11 @@ const DutHtml = ({ users, handleChange }) => {
                                 className="pcolorA"
                             >
                                 <p>{user.name}</p>
-                                <Copy data={user._id} />
+                                <Copy text={user._id} color='#234352' />
                             </td>
 
                             <td>
-                                <Copy data={user.email} />
+                                <Copy text={user.email} color='#234352' />
                             </td>
 
                             <td
@@ -55,7 +54,7 @@ const DutHtml = ({ users, handleChange }) => {
                                 }
                             >
                                 <Tooltip text='Ver favoritos' position={user.favorites.length > 0 ? 'right' : 'none'} backgroundColor="#336e99">
-                                    <Icons type='star' color={user.favorites.length > 0 ? '#336e99' : 'gray'} />
+                                    <Icons size='20px' type='star' color={user.favorites.length > 0 ? '#336e99' : 'gray'} />
                                 </Tooltip>
                             </td>
 
@@ -64,7 +63,7 @@ const DutHtml = ({ users, handleChange }) => {
                                 onClick={() => setModal({ open: true, data: user, type: 'conf' })}
                             >
                                 <Tooltip text='Configuración' position='left' backgroundColor="#336e99">
-                                    <Icons type='app' color='#336e99' />
+                                    <Icons size='20px' type='app' color='#336e99' />
                                 </Tooltip>
                             </td>
 
@@ -73,7 +72,7 @@ const DutHtml = ({ users, handleChange }) => {
                                 onClick={() => setModal({ open: true, data: user, type: 'data' })}
                             >
                                 <Tooltip text='Ver datos' position='right' backgroundColor="#336e99">
-                                    <Icons type='event' color='#336e99' />
+                                    <Icons size='20px' type='event' color='#336e99' />
                                 </Tooltip>
                             </td>
 
@@ -82,21 +81,32 @@ const DutHtml = ({ users, handleChange }) => {
                                 onClick={() => setModal({ open: true, data: user._id, type: 'active' })}
                             >
                                 <Tooltip text={user.active ? 'Desactivar' : 'Activar'} position="left" backgroundColor="#336e99">
-                                    <Icons type={user.active ? 'success' : 'error'} color={user.active ? '#336e99' : 'red'} />
+                                    <Icons size='20px' type={user.active ? 'success' : 'error'} color={user.active ? '#336e99' : 'red'} />
+                                </Tooltip>
+                            </td>
+
+                            <td
+                                className="tdBack"
+                                onClick={() => setModal({ open: true, data: { id: user._id, name: user.name }, type: 'delete' })}
+                            >
+                                <Tooltip text='Eliminar' position="left" backgroundColor="#336e99">
+                                    <Icons size='20px' type='delete' color='gray' />
                                 </Tooltip>
                             </td>
 
                         </tr>
                     ))}
                 </tbody>
+
             </table>
 
-            <Modal open={modal.open} onClose={() => setModal({ open: false, data: null, type: null })}>
+            <Modal open={modal.open} onClose={() => setModal({ open: false, data: null, type: null })} btn={false}>
                 {modal.type === 'img' && <DutmAvatar user={modal.data} handleChange={handleChange} setModal={setModal} />}
                 {modal.type === 'favorite' && <p>{modal.data}</p>}
                 {modal.type === 'conf' && <DutmConfig user={modal.data} />}
-                {modal.type === 'data' && <p>data</p>}
+                {modal.type === 'data' && <DutmData user={modal.data} setModal={setModal} handleUpdate={handleUpdate} />}
                 {modal.type === 'active' && <p>{modal.data}</p>}
+                {modal.type === 'delete' && <DutmDelete user={modal.data} setModal={setModal} handleDelete={handleDelete} />}
             </Modal>
         </div>
     );
