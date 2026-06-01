@@ -1,18 +1,23 @@
 import './login.css';
+import { SpinnerH } from 'fara-comp-react';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import UserForm from '../../../components/users/UserForm/UserForm';
-import { useLoginContext } from '../../../context/LoginContext.jsx';
+import { useLoginContext } from '@/context/LoginContext.jsx';
+import UserForm from '@/components/users/UserForm/UserForm.jsx';
 
 const Login = () => {
 
     const navigate = useNavigate();
     const { user, login } = useLoginContext();
-    const [values, setValues] = useState();
+
+    const [values, setValues] = useState(null);
+    const [laoding, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         await login(values);
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -35,7 +40,14 @@ const Login = () => {
                     values={values} setValues={setValues}
                 />
                 <p className='pcolorA'>Todos los inputs son obligatorios</p>
-                <button className='btn btnA'>Iniciar</button>
+
+                <button className='btn btnA btn-center' disabled={laoding}>
+                    {laoding
+                        ? <SpinnerH color='white' />
+                        : 'Iniciar'
+                    }
+                </button>
+
                 <section>
                     <Link to={'/register'} className='pgray'>Regístrate</Link>
                     <Link to={'/what_email'} className='pgray'>Recuperar contraseña</Link>

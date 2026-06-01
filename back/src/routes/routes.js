@@ -57,24 +57,27 @@ export default class Router {
         if (strategy === passportEnum.JWT) {
             passport.authenticate(strategy, function (err, user, info) {
                 if (err) return next(err);
-                if (!user) return res.status(401).send({ error: info.messages ? info.messages : info.toString() });
+                if (!user) {
+                    if (!req.cookies?.refreshToken) return res.send({ user: null });
+                    return res.status(401).send({ error: info?.message || 'Unauthorized' });
+                };
                 req.user = user;
                 next();
             })(req, res, next);
         } else if (strategy === passportEnum.OPTIONAL) {
-            passport.authenticate(passportEnum.JWT, { session: false }, function (err, user, info) {
+            passport.authenticate('jwt', { session: false }, (err, user) => {
                 if (err) return next(err);
                 if (user) req.user = user;
                 next();
             })(req, res, next);
         } else {
             next();
-        }
+        };
     };
 
     handlePolicies = (policies) => (req, res, next) => {
         if (policies[0] === 'PUBLIC') return next();
-        const { user } = req.user;
+        const user = req.user;
         if (!policies.includes(user.role.toUpperCase())) return res.status(403).json({ message: 'Forbidden' });
         next();
     };
@@ -95,7 +98,7 @@ export default class Router {
     applyCallbacks(callbacks) {
         return callbacks.map((callback) => async (...params) => {
             try {
-                await callback.apply(this, params);//req, res, next
+                await callback.apply(this, params); //req, res, next
             } catch (error) {
                 params[1].status(500).json({ error: error.message });
             };

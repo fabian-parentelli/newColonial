@@ -8,8 +8,8 @@ const NavBatMenuData = ({ user }) => {
                 <img src={user?.avatar?.[0] ?? '/cat.png'} alt="img" />
             </div>
             <div>
-                <h4>{user.name}</h4>
-                <h4 className='pgray'>{user.email}</h4>
+                <h4>{user?.name}</h4>
+                <h4 className='pgray'>{user?.email}</h4>
             </div>
         </div>
     );

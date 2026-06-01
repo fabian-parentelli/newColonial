@@ -1,18 +1,21 @@
-import dotEnv from 'dotenv';
+import { loadEnvFile } from "process";
 
-dotEnv.config();
+loadEnvFile();
 
 export default {
     port: process.env.PORT,
+    frontUrl: process.env.FRONT_URL,
+    BackUrl: process.env.BACK_URL,
+    mongoDB: process.env.MONGODB,
+    environment: process.env.ENVIRONMENT,
     privateKeyPassport: process.env.PRIVATEKEYPASSPORT,
+    userNodemailer: process.env.USERNODEMAILER,
+    passNodemailer: process.env.PASSNODEMAILER,
+    jwtPrivateKey: process.env.JWTPRIVATEKEY,
+    jwtPrivateRefresh: process.env.PRIVATEKEYREFRESH,
+
+    // Cloudinary
     cloudName: process.env.CLOUDNAME,
     apiKey: process.env.APIKEY,
     apiSecret: process.env.APISECRET,
-    mongoDB: process.env.MONGODB,
-    userNodemailer: process.env.USERNODEMAILER,
-    passNodemailer: process.env.PASSNODEMAILER,
-    privateKey: process.env.PRIVATEKEY,
-    frontUrl: process.env.FRONTURL,
-    backUrl: process.env.BACKURL,
-    cataWeb: process.env.CATAWEB,
 };

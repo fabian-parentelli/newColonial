@@ -1,7 +1,7 @@
 import { userRepository, activityRepository } from "../repositories/index.repositories.js";
 import { UserNotFound } from '../utils/custom-exceptions.utils.js';
 import { createHash, isValidPassword } from '../utils/hashedPassword.utils.js';
-import { generateToken, passwordToken } from '../utils/jwt.utils.js';
+import { passwordToken } from '../utils/jwt.utils.js';
 import { recoverPassword_HTML } from '../utils/html/recoverPassword.utils.js';
 import { sendEmail } from './email.service.js';
 import env from '../config/dotEnv.config.js';
@@ -9,18 +9,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { userOrAdmin } from '../utils/utilsServices/users.utils.js';
 import { getPublicId, deleteImg } from "../config/cloudinary.config.js";
 import { postUserHtml } from "../utils/html/postUser.html.js";
-
-const register = async (user) => {
-    const isUser = await userRepository.exists(user.email);
-    if (isUser) throw new UserNotFound('Ya existe un usuario con este email');
-    user.password = createHash(user.password);
-    const result = await userRepository.register(user);
-    if (!result) throw new UserNotFound('No se puede registrar al usuario');
-    await activityRepository.create({ eventId: result._id, userId: result._id, type: 'register' });
-    delete result.password;
-    const accesToken = generateToken(result);
-    return { status: 'success', accesToken };
-};
 
 const login = async (user) => {
     const isUser = await userRepository.getByEmail(user.email);
@@ -30,8 +18,8 @@ const login = async (user) => {
     if (!isUser.active) throw new UserNotFound('Error de permisos, comunícate con nosotros');
     await activityRepository.create({ eventId: isUser._id, userId: isUser._id, type: 'login' });
     delete isUser.password;
-    const accesToken = generateToken(isUser);
-    return { status: 'success', accesToken };
+    // const accesToken = generateToken(isUser);
+    // return { status: 'success', accesToken };
 };
 
 const recoverPassword = async ({ email }) => {
@@ -70,13 +58,6 @@ const postUser = async ({ body }, imagesUrl, { user }) => {
     };
     await sendEmail(emailTo);
     return { status: 'success' };
-};
-
-const current = async ({ user }) => {
-    const userDb = await userRepository.getById(user._id);
-    if (!userDb) throw new UserNotFound('No se encuentra el usuario en la base de datos');
-    delete userDb.password;
-    return userDb;
 };
 
 const interPass = async ({ id }) => {
@@ -171,7 +152,7 @@ const deleteUser = async ({ id }) => {
 };
 
 export {
-    register, login, recoverPassword, current, interPass, getUsers, postUser,
+    login, recoverPassword, interPass, getUsers, postUser,
     newPassword, updateImg, putAvatar, update, deleteAvatar, getAutoComplete,
     deleteUser
 };

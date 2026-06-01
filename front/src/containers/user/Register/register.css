@@ -9,11 +9,6 @@
     flex-wrap: wrap;
 }
 
-.register button {
-    width: 220px;
-    margin: 0 auto;
-}
-
 @media (max-width: 426px) {
     
     .register {

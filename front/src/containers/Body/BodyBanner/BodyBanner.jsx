@@ -18,29 +18,36 @@ const BodyBanner = () => {
 
     useEffect(() => {
         if (banners.length === 0) return;
+        let timeoutId = null;
         const interval = setInterval(() => {
-            setIndex(prev => prev + 1);
-        }, 4000);
-        return () => clearInterval(interval);
-    }, [banners]);
-
-    useEffect(() => {
-        if (index === banners.length) {
-            const timeout = setTimeout(() => {
-                if (trackRef.current) {
-                    trackRef.current.style.transition = 'none';
-                    setIndex(0);
-                    trackRef.current.style.transform = `translateX(0%)`;
-                    requestAnimationFrame(() => {
-                        requestAnimationFrame(() => {
-                            if (trackRef.current) trackRef.current.style.transition = 'transform 0.6s ease-in-out';
-                        });
-                    });
+            setIndex(prev => {
+                if (prev >= banners.length) return prev;
+                const next = prev + 1;
+                if (next === banners.length) {
+                    timeoutId = setTimeout(() => {
+                        timeoutId = null;
+                        if (trackRef.current) {
+                            trackRef.current.style.transition = 'none';
+                            trackRef.current.style.transform = 'translateX(0%)';
+                            requestAnimationFrame(() => {
+                                requestAnimationFrame(() => {
+                                    if (trackRef.current) {
+                                        trackRef.current.style.transition = 'transform 0.6s ease-in-out';
+                                    }
+                                });
+                            });
+                        }
+                        setIndex(0);
+                    }, 600);
                 }
-            }, 600);
-            return () => clearTimeout(timeout);
-        }
-    }, [index, banners.length]);
+                return next;
+            });
+        }, 4000);
+        return () => {
+            clearInterval(interval);
+            if (timeoutId) clearTimeout(timeoutId);
+        };
+    }, [banners]);
 
     const extendedBanners = banners.length > 0 ? [...banners, banners[0]] : [];
 

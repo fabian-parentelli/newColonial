@@ -19,7 +19,7 @@ const DashBoard = () => {
     const [vewPanel, setVewPanel] = useState('/');
 
     useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }) }, [vewPanel]);
-
+    
     return (
         <div className='dashBoard'>
 
