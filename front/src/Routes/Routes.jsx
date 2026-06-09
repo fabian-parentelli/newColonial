@@ -2,11 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "../components/utils/ScrollToTop.jsx";
 import NavBar from "../containers/NavBar/NavBar.jsx";
 import Body from "../containers/Body/Body.jsx";
-import Login from "../containers/user/Login/Login.jsx";
+
 import Footer from "../containers/Footer/Footer.jsx";
-import Register from "../containers/user/Register/Register.jsx";
-import WhatEmail from "../containers/user/WhatEmail/WhatEmail.jsx";
-import NewPassword from "../containers/user/NewPassword/NewPassword.jsx";
 import DashBoard from "../containers/DashBoard/DashBoard.jsx";
 import Avatars from "../containers/layouts/Avatars/Avatars.jsx";
 import Product from "../containers/layouts/products/Product/Product.jsx";
@@ -20,6 +17,8 @@ import FallowUp from "../containers/layouts/FallowUp/FallowUp.jsx";
 import Constructions from "../containers/layouts/Constructions/Constructions.jsx";
 import FavoritesPage from "../containers/layouts/FavoritesPage/FavoritesPage.jsx";
 import Lists from "../containers/layouts/Lists/Lists.jsx";
+import Session from "../containers/Session/Session.jsx";
+import AccessAccount from "../containers/external_access/AccessAccount/AccessAccount.jsx";
 
 const WrapRoutes = () => {
 
@@ -31,10 +30,7 @@ const WrapRoutes = () => {
 
                 <Routes>
                     <Route path="/" element={<Body />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/what_email" element={<WhatEmail />} />
-                    <Route path="/password/:token" element={<NewPassword />} />
+                    <Route path="/session" element={<Session />} />
                     <Route path="/dashboard" element={<DashBoard />} />
                     <Route path="/avatars" element={<Avatars />} />
                     <Route path="/product/:id" element={<Product />} />
@@ -46,6 +42,7 @@ const WrapRoutes = () => {
                     <Route path="/fallowup/:id" element={<FallowUp />} />
                     <Route path="/favorites" element={<FavoritesPage />} />
                     <Route path="/list" element={<Lists />} />
+                    <Route path="/access_account/:id" element={<AccessAccount />} />
 
                     <Route path="/*" element={<Constructions />} />
                 </Routes>

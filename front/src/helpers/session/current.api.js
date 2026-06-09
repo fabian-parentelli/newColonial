@@ -5,6 +5,7 @@ const currentApi = async () => {
     return await apiFetch('/api/session/current', {
         method: 'GET',
     });
+    
 };
 
 export { currentApi };

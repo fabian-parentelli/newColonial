@@ -2,15 +2,19 @@ import { isValidEmail } from "../validations.val.js";
 import { ErrorNotFound } from "../../utils/custom-exceptions.utils.js";
 
 const register = (body) => {
-    
+
     const bodyKeys = Object.keys(body);
-    const allowedKeys = ['email', 'password', 'name', 'phone', 'location'];
+    const allowedKeys = ['email', 'password', 'name', 'phone', 'location', 'type'];
 
     if (bodyKeys.length !== allowedKeys.length || !bodyKeys.every(key => allowedKeys.includes(key))) {
         throw new ErrorNotFound("El cuerpo de la petición contiene propiedades no permitidas o faltan campos obligatorios.");
     };
 
-    const { email, password, name, phone, location } = body;
+    const { email, password, name, phone, city, neighborhood, location, type } = body;
+
+    if (!type || type !== 'register') {
+        throw new ErrorNotFound("El tipo debe ser 'register'.");
+    };
 
     if (!email || !isValidEmail(email)) {
         throw new ErrorNotFound("El email es obligatorio y debe tener un formato válido.");
@@ -40,11 +44,11 @@ const register = (body) => {
     };
 
     if (!location.city || typeof location.city !== 'string' || location.city.trim().length === 0) {
-        throw new ErrorNotFound("La ciudad es obligatoria.");
+        throw new ErrorNotFound("La ciudad en la ubicación es obligatoria.");
     };
 
     if (!location.address || typeof location.address !== 'string' || location.address.trim().length === 0) {
-        throw new ErrorNotFound("La dirección es obligatoria.");
+        throw new ErrorNotFound("La dirección en la ubicación es obligatoria.");
     };
 
     return body;

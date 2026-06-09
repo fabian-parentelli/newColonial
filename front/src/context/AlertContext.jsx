@@ -1,15 +1,15 @@
-import { createContext, useContext, useState } from "react";
-import Snackbar from "../components/utils/SnackBar/SnackBar.jsx";
+import { Snackbar } from 'fara-comp-react';
 import Loader from "../components/utils/Loader/Loader.jsx";
+import { createContext, useContext, useState } from "react";
 
 const AlertContext = createContext();
 export const useAlertContext = () => useContext(AlertContext);
 
 const AlertProvider = ({ children }) => {
 
-    const [snack, setSnack] = useState({ open: false, message: '', status: 'success' });
     const [loading, setLoading] = useState(false);
     const [textLoader, setTextLoader] = useState(false);
+    const [snack, setSnack] = useState({ open: false, message: '', status: 'success' });
 
     const showAlert = (message, status = 'success') => {
         setSnack({ open: true, message, status });

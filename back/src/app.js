@@ -8,7 +8,7 @@ import cookieParser from 'cookie-parser';
 
 import {
     userRouter, configRouter, avatarRouter, productRouter, publicityRouter, 
-    orderRouter, messageRouter, sessionRouter
+    orderRouter, messageRouter, sessionRouter, testRouter
 } from './routes/index.router.js';
 
 const app = express();
@@ -31,5 +31,6 @@ app.use('/api/product', productRouter);
 app.use('/api/publicity', publicityRouter);
 app.use('/api/order', orderRouter);
 app.use('/api/message', messageRouter);
+app.use('/api/test', testRouter);
 
 app.listen(env.port, () => console.log('Server conected'));

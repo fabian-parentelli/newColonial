@@ -2,14 +2,9 @@ import { userManager } from '../dao/manager/index.manager.js';
 
 export default class UserRepository {
 
-    register = async (user) => {
-        const result = await userManager.register(user);
-        return result;
-    };
-
-    exists = async (email) => {
-        const result = await userManager.exists(email);
-        return result;
+    postUser = async (user) => {
+        const result = await userManager.postUser(user);
+        return result.toObject();
     };
 
     getById = async (id) => {
@@ -17,18 +12,13 @@ export default class UserRepository {
         return result;
     };
 
-    getByEmail = async (email) => {
-        const result = await userManager.getByEmail(email);
+    getUser = async (query, get) => {
+        const result = await userManager.getUser(query, get);
         return result;
     };
 
     update = async (user) => {
         const result = await userManager.update(user);
-        return result;
-    };
-
-    getByIdPass = async (passId) => {
-        const result = await userManager.getByIdPass(passId);
         return result;
     };
 
@@ -40,13 +30,8 @@ export default class UserRepository {
     getAutoComplete = async (query) => {
         const result = await userManager.getAutoComplete(query);
         return result;
-    };
+    };;
 
-    getForRole = async (id) => {
-        const result = await userManager.getForRole(id);
-        return result;
-    };
-    
     deleteById = async (id) => {
         const result = await userManager.deleteById(id);
         return result;

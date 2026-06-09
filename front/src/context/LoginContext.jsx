@@ -6,6 +6,7 @@ import { currentApi } from "../helpers/session/current.api.js";
 import { registerApi } from '../helpers/session/register.api.js';
 
 import { userUpdateApi } from "../helpers/users/userUpdate.api.js"; // Elimiar #############
+import { postSessionApi } from "../helpers/session/postSession.api.js";
 
 const LoginContext = createContext();
 export const useLoginContext = () => useContext(LoginContext);
@@ -14,6 +15,15 @@ const LoginProvider = ({ children }) => {
 
     const { showAlert, setLoading } = useAlertContext();
     const [user, setUser] = useState({ data: null, logged: false });
+
+    const postSessionCtx = async (values) => {
+        const response = await postSessionApi(values);
+        if (response.status === 'success') setUser({ data: response.result, logged: true });
+        else {
+            showAlert(response.error, 'error');
+            setUser({ data: null, logged: false });
+        };
+    };
 
     const register = async (user) => {
         const response = await registerApi(user);
@@ -34,6 +44,8 @@ const LoginProvider = ({ children }) => {
 
     const logout = async () => {
         const response = await logoutApi();
+        console.log(response);
+        
         if (response.status === 'success') {
             setUser({ data: null, logged: false });
             showAlert('Hasta la próxima....', 'info');
@@ -65,7 +77,7 @@ const LoginProvider = ({ children }) => {
 
     return (
         <LoginContext.Provider
-            value={{ user, register, current, logout, login, updateUser }}
+            value={{ user, register, current, logout, login, updateUser, postSessionCtx }}
         >
             {children}
         </LoginContext.Provider>

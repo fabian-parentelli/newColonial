@@ -1,7 +1,7 @@
 import { userRepository, activityRepository } from "../repositories/index.repositories.js";
 import { UserNotFound } from '../utils/custom-exceptions.utils.js';
 import { createHash, isValidPassword } from '../utils/hashedPassword.utils.js';
-import { passwordToken } from '../utils/jwt.utils.js';
+// import { passwordToken } from '../utils/jwt.utils.js';
 import { recoverPassword_HTML } from '../utils/html/recoverPassword.utils.js';
 import { sendEmail } from './email.service.js';
 import env from '../config/dotEnv.config.js';
@@ -61,11 +61,11 @@ const postUser = async ({ body }, imagesUrl, { user }) => {
 };
 
 const interPass = async ({ id }) => {
-    const user = await userRepository.getByIdPass(id);
-    if (!user) throw new UserNotFound('Usuario no encontrado');
-    const tokenPass = passwordToken(user.email);
-    const url = `${env.frontUrl}/password/${tokenPass}`;
-    return url;
+    // const user = await userRepository.getByIdPass(id);
+    // if (!user) throw new UserNotFound('Usuario no encontrado');
+    // const tokenPass = passwordToken(user.email);
+    // const url = `${env.frontUrl}/password/${tokenPass}`;
+    // return url;
 };
 
 const getAutoComplete = async ({ active, seller }) => {

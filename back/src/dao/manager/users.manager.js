@@ -2,16 +2,16 @@ import { userModel } from '../models/users.model.js';
 
 export default class User {
 
-    register = async (user) => {
+    postUser = async (user) => {
         return await userModel.create(user);
-    };
-
-    exists = async (email) => {
-        return await userModel.exists({ email }) !== null;
     };
 
     getById = async (id) => {
         return await userModel.findById(id).lean();
+    };
+
+    getUser = async (query = {}, get = {}) => {
+        return await userModel.findOne(query, get).lean();
     };
 
     getByEmail = async (email) => {
@@ -19,11 +19,7 @@ export default class User {
     };
 
     update = async (user) => {
-        return await userModel.findByIdAndUpdate(user._id, user, { lean: true, new: true });
-    };
-
-    getByIdPass = async (passId) => {
-        return await userModel.findOne({ passId }, { email: 1, _id: 0 });
+        return await userModel.findByIdAndUpdate(user._id, user, { returnDocument: 'after' }).lean();
     };
 
     getUsers = async (query, page) => {
@@ -39,10 +35,6 @@ export default class User {
 
     getAutoComplete = async (query) => {
         return await userModel.find(query, { name: 1, _id: 1 });
-    };
-
-    getForRole = async (_id) => {
-        return await userModel.findOne({ _id }, { password: 1, role: 1 });
     };
 
     deleteById = async (_id) => {

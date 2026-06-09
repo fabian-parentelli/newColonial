@@ -2,7 +2,7 @@ import './passInput.css';
 import { useState } from 'react';
 import { Icons } from 'fara-comp-react';
 
-const PassInput = ({ password, setPassword, handleChange }) => {
+const PassInput = ({ password, setPassword, handleChange, required = false }) => {
 
     const [view, setView] = useState(false);
 
@@ -25,13 +25,14 @@ const PassInput = ({ password, setPassword, handleChange }) => {
                 name="password"
                 type={view ? 'text' : 'password'}
                 placeholder="Contraseña"
+                required={required}
                 value={password || ''}
                 onChange={handleChange ? handleChange : (e) => setPassword(e.target.value)}
             />
 
             <Icons
                 type={view ? 'eye' : 'eyeclosed'}
-                color="gray"
+                color="#2C5469"
                 onClick={() => setView(!view)}
                 size="25px"
             />

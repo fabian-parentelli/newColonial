@@ -4,32 +4,17 @@ import env from '../config/dotEnv.config.js';
 
 const isDev = env.environment === 'development';
 
-const login = async (req, res) => {
+const postSession = async (req, res) => {
     try {
-        const { accessToken, refreshToken, result } = await service.login({ ...req.body });
-        const oneYear = 365 * 24 * 60 * 60 * 1000;
-        const thirtyMinutes = 30 * 60 * 1000;
-        res.cookie('accessToken', accessToken, { httpOnly: true, secure: !isDev, sameSite: 'strict', maxAge: thirtyMinutes });
-        res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: !isDev, sameSite: 'strict', maxAge: oneYear });
-        return res.sendSuccess({ status: 'success', result });
+        const result = await service.postSession({ ...req.body });
+        const { accessToken, refreshToken, user } = result;
+        if (accessToken && refreshToken) {
+            res.cookie('colonial_accessToken', accessToken, { httpOnly: true, secure: !isDev, sameSite: isDev ? 'lax' : 'none', maxAge: 15 * 60 * 1000 });
+            res.cookie('colonial_refreshToken', refreshToken, { httpOnly: true, secure: !isDev, sameSite: isDev ? 'lax' : 'none', maxAge: 30 * 24 * 60 * 60 * 1000 });
+        };
+        if (result) return res.sendSuccess({ status: 'success', result: user });
     } catch (error) {
-        console.log(error);
-        if (error instanceof ErrorCustom || error instanceof ErrorNotFound) return res.sendClientError(error.message);
-        res.sendServerError(error.message);
-    };
-};
-
-const register = async (req, res) => {
-    try {
-        const { accessToken, refreshToken, result } = await service.register({ ...req.body });
-        const oneYear = 365 * 24 * 60 * 60 * 1000;
-        const thirtyMinutes = 30 * 60 * 1000;
-        res.cookie('accessToken', accessToken, { httpOnly: true, secure: !isDev, sameSite: 'strict', maxAge: thirtyMinutes });
-        res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: !isDev, sameSite: 'strict', maxAge: oneYear });
-        return res.sendSuccess({ status: 'success', result });
-    } catch (error) {
-        console.log(error);
-        if (error instanceof ErrorCustom || error instanceof ErrorNotFound) return res.sendClientError(error.message);
+        if (error instanceof ErrorCustom) return res.sendClientError(error.message);
         res.sendServerError(error.message);
     };
 };
@@ -40,7 +25,7 @@ const postRefresh = async (req, res) => {
     try {
         const result = await service.postRefresh(refreshToken);
         const thirtyMinutes = 30 * 60 * 1000;
-        res.cookie('accessToken', result, { httpOnly: true, secure: !isDev, sameSite: 'strict', maxAge: thirtyMinutes });
+        res.cookie('colonial_accessToken', result, { httpOnly: true, secure: !isDev, sameSite: 'strict', maxAge: thirtyMinutes });
         if (result) return res.sendSuccess({ status: 'success' });
     } catch (error) {
         if (error instanceof ErrorCustom) return res.status(401).send({ error: error.message });
@@ -49,9 +34,29 @@ const postRefresh = async (req, res) => {
 };
 
 const logout = async (req, res) => {
-    res.clearCookie('accessToken', { httpOnly: true, secure: !isDev, sameSite: isDev ? 'lax' : 'none' });
-    res.clearCookie('refreshToken', { httpOnly: true, secure: !isDev, sameSite: isDev ? 'lax' : 'none' });
+    res.clearCookie('colonial_accessToken', { httpOnly: true, secure: !isDev, sameSite: isDev ? 'lax' : 'none' });
+    res.clearCookie('colonial_refreshToken', { httpOnly: true, secure: !isDev, sameSite: isDev ? 'lax' : 'none' });
     res.sendSuccess({ status: 'success' });
+};
+
+const whatEmail = async (req, res) => {
+    try {
+        const result = await service.whatEmail({ ...req.body });
+        if (result) return res.sendSuccess(result);
+    } catch (error) {
+        if (error instanceof ErrorCustom) return res.sendClientError(error.message);
+        res.sendServerError(error.message);
+    };
+};
+
+const accessAcount = async (req, res) => {
+    try {
+        const result = await service.accessAcount({ ...req.body });
+        if (result) return res.sendSuccess(result);
+    } catch (error) {
+        if (error instanceof ErrorCustom) return res.sendClientError(error.message);
+        res.sendServerError(error.message);
+    };
 };
 
 const getCurrent = async (req, res) => {
@@ -64,4 +69,4 @@ const getCurrent = async (req, res) => {
     };
 };
 
-export { login, register, postRefresh, logout, getCurrent };
+export { postSession, postRefresh, logout, whatEmail, accessAcount, getCurrent };

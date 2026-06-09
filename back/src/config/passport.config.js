@@ -3,7 +3,7 @@ import env from './dotEnv.config.js';
 import { Strategy as JwtStrategy } from 'passport-jwt';
 
 const cookieExtractor = (req) => {
-    if (req && req.cookies) return req.cookies['accessToken'] || null;
+    if (req && req.cookies) return req.cookies['colonial_accessToken'] || null;
     return null;
 };
 

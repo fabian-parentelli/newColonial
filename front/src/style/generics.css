@@ -1,0 +1,12 @@
+.bgdash {
+    padding: 1rem;
+    box-shadow: 0px 0px 2px gray;
+    border-radius: 8px;
+    background-color: var(--colorD);
+}
+
+.phover:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: .3s;
+}

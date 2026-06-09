@@ -26,7 +26,7 @@ const NavBarContent = () => {
                 <NavBarContSearch />
 
                 {!user.logged
-                    ? <Link className='btn btnA flex-center decoration-none' to={'/login'}>
+                    ? <Link className='btn btnA flex-center decoration-none' to={'/session'}>
                         Iniciar
                     </Link>
                     : <NavBarMenu user={user.data} />
