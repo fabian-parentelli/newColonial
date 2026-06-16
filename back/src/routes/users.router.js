@@ -6,18 +6,8 @@ import { uploadToCloudinary } from '../config/cloudinary.config.js';
 
 export default class UserRouter extends Router {
     init() {
-        
-        // register
-        this.post('/login', ['PUBLIC'], passportEnum.NOTHING, userController.login);
-        this.post('/recover_password', ['PUBLIC'], passportEnum.NOTHING, userController.recoverPassword);
-        this.post('/', ['ADMIN', 'MASTER'], passportEnum.JWT, multipleUploader, uploadToCloudinary, userController.postUser);
-        
-        // current
-
-        this.get('/inter_pass/:id', ['PUBLIC'], passportEnum.NOTHING, userController.interPass);
         this.get('/ac', ['ADMIN', 'MASTER'], passportEnum.JWT, userController.getAutoComplete);
         this.get('/', ['MASTER', 'ADMIN'], passportEnum.JWT, userController.getUsers);
-        this.put('/new_password', ['PUBLIC'], passportEnum.JWT, userController.newPassword);
         this.put('/image', ['USER', 'ADMIN', 'MASTER'], passportEnum.JWT, multipleUploader, uploadToCloudinary, userController.updateImg);
         this.put('/avatar', ['USER', 'ADMIN', 'MASTER'], passportEnum.JWT, userController.putAvatar);
         this.put('/delete', ['USER', 'ADMIN', 'MASTER'], passportEnum.JWT, userController.deleteAvatar);

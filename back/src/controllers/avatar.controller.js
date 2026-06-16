@@ -4,7 +4,7 @@ import { AvatarNotFound } from '../utils/custom-exceptions.utils.js';
 const postAvatar = async (req, res) => {
     const imagesUrl = req.cloudinaryUrls;
     try {
-        const result = await avatarService.postAvatar({ ...req.body }, imagesUrl, { ...req.user });
+        const result = await avatarService.postAvatar({ ...req.body }, imagesUrl, req.user);
         if (result) return res.sendSuccess(result);
     } catch (error) {
         if (error instanceof AvatarNotFound) return res.sendClientError(error.message);
@@ -24,7 +24,7 @@ const getAvatars = async (req, res) => {
 
 const putAvatar = async (req, res) => {
     try {
-        const result = await avatarService.putAvatar({ ...req.params }, { ...req.user });
+        const result = await avatarService.putAvatar({ ...req.params }, req.user);
         if (result) return res.sendSuccess(result);
     } catch (error) {
         if (error instanceof AvatarNotFound) return res.sendClientError(error.message);
@@ -34,7 +34,7 @@ const putAvatar = async (req, res) => {
 
 const deleteAvatar = async (req, res) => {
     try {
-        const result = await avatarService.deleteAvatar({ ...req.params }, { ...req.user });
+        const result = await avatarService.deleteAvatar({ ...req.params }, req.user);
         if (result) return res.sendSuccess(result);
     } catch (error) {
         if (error instanceof AvatarNotFound) return res.sendClientError(error.message);

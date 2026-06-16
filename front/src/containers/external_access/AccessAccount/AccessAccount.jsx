@@ -17,7 +17,7 @@ const AccessAccount = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
+        setLoading(true);cd
         const response = await accessAccountApi({ ...values, id });
         if (response.status === 'success') navigate('/');
         setLoading(false);

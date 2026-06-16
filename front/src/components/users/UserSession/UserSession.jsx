@@ -5,11 +5,10 @@ import { useLoginContext } from '@/context/LoginContext.jsx';
 
 const UserSession = ({ setModal }) => {
 
-    const { login, user } = useLoginContext();
+    const { user, postSessionCtx } = useLoginContext();
 
-    const [values, setValues] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [userSession, setUserSession] = useState({ register: false });
+    const [values, setValues] = useState({ type: false });
 
     const handleChange = (e) => setValues({ ...values, [e.target.name]: e.target.value });
     const handleLocation = (e) => setValues({
@@ -24,7 +23,7 @@ const UserSession = ({ setModal }) => {
     const handleSubmit = async (e) => {
         setLoading(true);
         e.preventDefault();
-        await login(values);
+        await postSessionCtx({...values, type: values.type ? 'register' : 'login'});
         setLoading(false);
     };
 
@@ -41,12 +40,12 @@ const UserSession = ({ setModal }) => {
 
             <p className='pgray txt-center'>Debes iniciar sesion o crear <br /> una cuenta para poder enviar el pedido.</p>
 
-            <Switch value={userSession} setValues={setUserSession} name={"register"}
+            <Switch value={values} setValues={setValues} name={"type"}
                 statusFalse='Ya tengo cuenta'
                 statusTrue='Cuenta nueva'
             />
 
-            {userSession.register &&
+            {values.type &&
                 <input type="text" name='name' placeholder='Nombre' value={values?.name || ''}
                     onChange={handleChange} required
                 />
@@ -58,7 +57,7 @@ const UserSession = ({ setModal }) => {
 
             <PassInput password={values?.password} handleChange={handleChange} />
 
-            {userSession.register &&
+            {values.type &&
                 <>
                     <input type="text" name='phone' placeholder='Teléfono' value={values?.phone || ''}
                         onChange={handleChange} required
@@ -79,7 +78,7 @@ const UserSession = ({ setModal }) => {
             <button className='btn btnA' disabled={loading}>
                 {loading
                     ? <SpinnerH color='white' />
-                    : userSession.register ? 'Regístrate' : 'Iniciar sesion'
+                    : values.type ? 'Regístrate' : 'Iniciar sesion'
                 }
             </button>
         </form>

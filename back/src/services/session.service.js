@@ -76,6 +76,7 @@ const accessAcount = async (body) => {
 
 const getCurrent = async (user) => {
     const result = await userRepository.getById(user._id);
+    delete result.password;
     if (!result) throw new ErrorCustom('Error al traer los datos del usuarios', 'info');
     return { status: 'success', result };
 };

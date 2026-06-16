@@ -1,4 +1,4 @@
-import { orderRepository } from '../repositories/index.repositories.js';
+import { orderRepository, userRepository } from '../repositories/index.repositories.js';
 import { OrderNotFound } from '../utils/custom-exceptions.utils.js';
 import { newOrderHtml } from '../utils/html/newOrderHtml.utils.js';
 import { isCustomer } from '../utils/utilsServices/customer.utils.js';
@@ -20,10 +20,11 @@ const postOrder = async (body, user) => {
     if (!result) throw new OrderNotFound('Error al crear la orden');
 
     setImmediate(async () => {
+        const fullUser = await userRepository.getUser({ _id: user._id }, { name: 1, email: 1 });
         const emailTo = {
-            to: user.email,
+            to: fullUser.email,
             subject: 'Orden recibida',
-            html: await newOrderHtml(user, result)
+            html: await newOrderHtml(fullUser, result)
         };
         await sendEmail(emailTo);
     });
@@ -53,24 +54,11 @@ const putStatus = async (body) => {
     return { status: 'success', result };
 };
 
-const deleteOrder = async ({ id, pass }, { user }) => {
-    await verifyRole(pass, user._id, ['admin', 'master']);
+const deleteOrder = async ({ id, pass }, user) => {
+    await verifyRole(pass, user._id, ['admin', 'master']);    
     const result = await orderRepository.deleteOrder(id);
     if (!result) throw new OrderNotFound('Error al eliminar la orden');
     return { status: 'success' };
 };
 
-// borrar -----------------------------------------------
-const getBorrar = async () => {
-    const orders = await orderRepository.getOrders({}, 2)
-    if (orders) {
-        for (const order of orders.docs) {
-            if (order.customer) delete order.customer;
-            order.type = 'order'
-            await orderRepository.update(order);
-        }
-    }
-    return { status: 'success' };
-};
-
-export { postSale, postOrder, getOrders, putStatus, deleteOrder, getBorrar };
+export { postSale, postOrder, getOrders, putStatus, deleteOrder };

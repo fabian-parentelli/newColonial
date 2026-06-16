@@ -1,12 +1,9 @@
 import { useAlertContext } from "./AlertContext";
-import { loginApi } from "../helpers/session/login.api.js";
 import { createContext, useContext, useState } from "react";
 import { logoutApi } from '../helpers/session/logout.api.js';
 import { currentApi } from "../helpers/session/current.api.js";
-import { registerApi } from '../helpers/session/register.api.js';
-
-import { userUpdateApi } from "../helpers/users/userUpdate.api.js"; // Elimiar #############
 import { postSessionApi } from "../helpers/session/postSession.api.js";
+import { userUpdateApi } from "../helpers/users/userUpdate.api.js"; // Elimiar #############
 
 const LoginContext = createContext();
 export const useLoginContext = () => useContext(LoginContext);
@@ -20,17 +17,6 @@ const LoginProvider = ({ children }) => {
         const response = await postSessionApi(values);
         if (response.status === 'success') setUser({ data: response.result, logged: true });
         else {
-            showAlert(response.error, 'error');
-            setUser({ data: null, logged: false });
-        };
-    };
-
-    const register = async (user) => {
-        const response = await registerApi(user);
-        if (response.status === 'success') {
-            setUser({ data: response.result, logged: true });
-            showAlert('Registro exitoso');
-        } else {
             showAlert(response.error, 'error');
             setUser({ data: null, logged: false });
         };
@@ -52,15 +38,6 @@ const LoginProvider = ({ children }) => {
         } else showAlert(response.error, 'error');
     };
 
-    const login = async (user) => {
-        const response = await loginApi(user);
-        if (response.status === 'success') setUser({ data: response.result, logged: true });
-        else {
-            showAlert(response.error, 'error');
-            setUser({ ...user, error: response.error });
-        };
-    };
-
     const updateUser = async (user) => { // esto se va ##########################################
         setLoading(true);
         const response = await userUpdateApi(user);
@@ -77,7 +54,7 @@ const LoginProvider = ({ children }) => {
 
     return (
         <LoginContext.Provider
-            value={{ user, register, current, logout, login, updateUser, postSessionCtx }}
+            value={{ user, current, logout, updateUser, postSessionCtx }}
         >
             {children}
         </LoginContext.Provider>

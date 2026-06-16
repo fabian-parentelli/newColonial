@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 
-const DashMessAdmin = () => {
+const DashMessAdmin = ({ user }) => {
+
+    console.log(user);
+    
 
     const [messages, setMessages] = useState(null);
 

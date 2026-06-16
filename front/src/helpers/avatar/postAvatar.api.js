@@ -1,20 +1,12 @@
-const url = import.meta.env.VITE_API_URL;
+import { apiFetch } from '../apiFetch.api.js';
 
 const postAvatarApi = async (demand) => {
 
-    const token = localStorage.getItem('token');
-
-    const response = await fetch(`${url}/api/avatar`, {
+    return await apiFetch('/api/avatar', {
         method: 'POST',
         body: demand,
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    });
-
-    const content = await response.json();
-    return content?.data || content;
+    }, true);
+    
 };
 
 export { postAvatarApi };

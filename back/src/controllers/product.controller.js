@@ -35,7 +35,7 @@ const putProductImg = async (req, res) => {
 
 const putOpportinity = async (req, res) => {
     try {
-        const result = await productService.putOpportinity({ ...req.body }, { ...req.user });
+        const result = await productService.putOpportinity({ ...req.body }, req.user);
         if (result) return res.sendSuccess(result);
     } catch (error) {
         if (error instanceof ProductNotFound) return res.sendClientError(error.message);

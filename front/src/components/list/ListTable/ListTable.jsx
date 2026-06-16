@@ -11,7 +11,7 @@ const ListTable = ({ products, printList }) => {
                     <p className='pgray'>11-5943-7955</p>
                     <p className='pgray'>https://lacolonial.cloud</p>
                 </div>
-                <img src="https://res.cloudinary.com/ddjldilsm/image/upload/v1757103727/codigoqr_et8o4l.png" alt="qr" />
+                <img src="https://res.cloudinary.com/ddjldilsm/image/upload/v1781640799/Imagen1_xr4oul.webp" alt="qr" />
             </section>
 
             <section className='listTableProd'>

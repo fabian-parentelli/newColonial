@@ -1,19 +1,11 @@
-const url = import.meta.env.VITE_API_URL;
+import { apiFetch } from '../apiFetch.api.js';
 
 const deleteAvatarApi = async (id, password) => {
 
-    const token = localStorage.getItem('token');
-
-    const response = await fetch(`${url}/api/avatar/${id}/${password}`, {
+    return await apiFetch(`/api/avatar/${id}/${password}`, {
         method: 'DELETE',
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
     });
-
-    const content = await response.json();
-    return content?.data || content;
+    
 };
 
 export { deleteAvatarApi };

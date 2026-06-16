@@ -58,7 +58,7 @@ export default class Router {
             passport.authenticate(strategy, function (err, user, info) {
                 if (err) return next(err);
                 if (!user) {
-                    if (!req.cookies?.refreshToken) return res.send({ user: null });
+                    if (!req.cookies?.colonial_refreshToken) return res.send({ user: null });
                     return res.status(401).send({ error: info?.message || 'Unauthorized' });
                 };
                 req.user = user;

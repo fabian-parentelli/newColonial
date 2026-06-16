@@ -20,7 +20,7 @@ const postSession = async (req, res) => {
 };
 
 const postRefresh = async (req, res) => {
-    const refreshToken = req.cookies.refreshToken;
+    const refreshToken = req.cookies.colonial_refreshToken;
     if (!refreshToken) return res.status(401).send({ error: 'No token' });
     try {
         const result = await service.postRefresh(refreshToken);

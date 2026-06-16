@@ -12,11 +12,14 @@ const postSale = async (req, res) => {
 };
 
 const postOrder = async (req, res) => {
-    const { user } = req.user;
+    const user = req.user;
     try {
         const result = await orderService.postOrder({ ...req.body }, user);
         if (result) return res.sendSuccess(result);
     } catch (error) {
+
+        console.log(error);
+
         if (error instanceof OrderNotFound) return res.sendClientError(error.message);
         res.sendServerError(error.message);
     };
@@ -44,7 +47,7 @@ const putStatus = async (req, res) => {
 
 const deleteOrder = async (req, res) => {
     try {
-        const result = await orderService.deleteOrder({ ...req.params }, { ...req.user });
+        const result = await orderService.deleteOrder({ ...req.params }, req.user);
         if (result) return res.sendSuccess(result);
     } catch (error) {
         if (error instanceof OrderNotFound) return res.sendClientError(error.message);
@@ -52,15 +55,4 @@ const deleteOrder = async (req, res) => {
     };
 };
 
-// Borrar --------------------------------------------------------------
-const getBorrar = async (req, res) => {
-    try {
-        const result = await orderService.getBorrar();
-        if (result) return res.sendSuccess(result);
-    } catch (error) {
-        if (error instanceof OrderNotFound) return res.sendClientError(error.message);
-        res.sendServerError(error.message);
-    };
-};
-
-export { postSale, postOrder, getOrders, putStatus, deleteOrder, getBorrar };
+export { postSale, postOrder, getOrders, putStatus, deleteOrder };

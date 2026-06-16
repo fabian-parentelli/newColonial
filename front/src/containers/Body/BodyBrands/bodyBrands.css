@@ -1,0 +1,100 @@
+.bodyBrands {
+    width: 80%;
+    margin: 2rem auto;
+    padding-bottom: 2rem;
+}
+
+.bodyBrands .bodyBrandsTitle {
+    text-align: center;
+    color: var(--colorA);
+    font-size: 1.5rem;
+    margin: 2rem 0;
+    font-weight: 700;
+    padding-top: 2rem;
+}
+
+.bodyBrands .bodyBrandsGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.bodyBrands .bodyBrandsCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 0.5rem;
+    border-radius: 12px;
+    background-color: var(--colorF);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    text-transform: uppercase;
+}
+
+.bodyBrands .bodyBrandsCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(44, 84, 105, 0.15);
+    background-color: var(--colorD);
+}
+
+.bodyBrands .bodyBrandsCard .bodyBrandsAvatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: var(--colorA);
+    color: var(--colorD);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.bodyBrands .bodyBrandsCard:hover .bodyBrandsAvatar {
+    transform: scale(1.1);
+}
+
+.bodyBrands .bodyBrandsCard .bodyBrandsName {
+    color: var(--colorA);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+@media (max-width: 1024px) {
+    .bodyBrands .bodyBrandsGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .bodyBrands {
+        width: 90%;
+    }
+
+    .bodyBrands .bodyBrandsGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.6rem;
+    }
+
+    .bodyBrands .bodyBrandsCard {
+        padding: 0.7rem 0.3rem;
+    }
+
+    .bodyBrands .bodyBrandsCard .bodyBrandsAvatar {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+
+    .bodyBrands .bodyBrandsCard .bodyBrandsName {
+        font-size: 0.72rem;
+    }
+}

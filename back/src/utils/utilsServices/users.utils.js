@@ -5,7 +5,7 @@ import { createHash } from "../hashedPassword.utils.js";
 // import { generateToken } from "../jwt.utils.js";
 
 const verifyRole = async (password, userId, roles) => {
-    const user = await userRepository.getForRole(userId);
+    const user = await userRepository.getUser({ _id: userId }, { password: 1, role: 1 });
     const comparePassword = isValidPassword(user, password);
     if (!comparePassword) throw new UserNotFound('La contraseña no es correcta');
     if (!roles.includes(user.role)) throw new UserNotFound('No tienes permiso para realizar esta tarea');

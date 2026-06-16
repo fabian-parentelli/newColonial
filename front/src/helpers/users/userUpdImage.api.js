@@ -1,18 +1,10 @@
-const url = import.meta.env.VITE_API_URL;
+import { apiFetch } from '../apiFetch.api.js';
 
 export const userUpdateImgApi = async (user) => {
 
-    const token = localStorage.getItem('token');
-
-    const response = await fetch(`${url}/api/user/image`, {
+    return await apiFetch('/api/user/image', {
         method: 'PUT',
         body: user,
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    });
+    }, true);
 
-    const content = await response.json();
-    return content?.data || content;
 };

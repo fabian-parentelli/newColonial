@@ -1,5 +1,6 @@
-import { useLoginContext } from "../../../context/LoginContext";
-import TitleDash from "../../../components/utils/TitleDash/TitleDash";
+import { useLoginContext } from "@/context/LoginContext.jsx";
+import TitleDash from "@/components/utils/TitleDash/TitleDash.jsx";
+import DashMessAdmin from "./DashMessAdmin/DashMessAdmin";
 
 const DashMessage = () => {
 
@@ -10,7 +11,7 @@ const DashMessage = () => {
             <TitleDash icon='message' title='Mensajes' help='messages' />
 
             {user.logged && user.data.role !== 'user'
-                ? 'Admin'
+                ? <DashMessAdmin user={user.data} />
                 : 'Usuario'
             }
         </div>

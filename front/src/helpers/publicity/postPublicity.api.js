@@ -1,20 +1,12 @@
-const url = import.meta.env.VITE_API_URL;
+import { apiFetch } from '../apiFetch.api.js';
 
 const postPublicityApi = async (publicity) => {
     
-    const token = localStorage.getItem('token');
-
-    const response = await fetch(`${url}/api/publicity`, {
+    return await apiFetch('/api/publicity', {
         method: 'POST',
         body: publicity,
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    });
+    }, true);
 
-    const content = await response.json();
-    return content?.data || content;
 };
 
 export { postPublicityApi };

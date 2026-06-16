@@ -6,6 +6,7 @@ import BodyToProducts from './BodyToProducts/BodyToProducts';
 import ProdSections from '../../components/products/ProdSections/ProdSectuons';
 import BodyContact from './BodyContact/BodyContact';
 import BodyButtons from './BodyButtons/BodyButtons';
+import BodyBrands from './BodyBrands/BodyBrands';
 
 const Body = () => {
 
@@ -19,6 +20,7 @@ const Body = () => {
             <ProdSections type='launch' time={1000} />
             <BodyButtons />
             {/* <BodyContact /> */}
+            <BodyBrands />
         </div>
     );
 };

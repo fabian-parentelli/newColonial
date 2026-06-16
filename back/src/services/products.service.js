@@ -40,7 +40,7 @@ const putProductImg = async (body, imagesUrl) => {
     return { status: 'success', result };
 };
 
-const putOpportinity = async ({ password }, { user }) => {
+const putOpportinity = async ({ password }, user) => {
     await verifyRole(password, user._id, ['master']);
     const products = await productRepository.getAllProducts({ location: 'opportunity' });
     if (!products) throw new ProductNotFound('Error al tarer las oportunidades');

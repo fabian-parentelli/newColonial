@@ -1,23 +1,15 @@
-const url = import.meta.env.VITE_API_URL;
+import { apiFetch } from '../apiFetch.api.js';
 
 const getAvtarsApi = async (obj) => {
 
-    let urlData = `${url}/api/avatar?`;
+    let path = '/api/avatar?';
 
-    if (obj.page) urlData += `page=${obj.page}&`;
-    if (obj.active !== undefined) urlData += `active=${obj.active}&`;
+    if (obj.page) path += `page=${obj.page}&`;
+    if (obj.active !== undefined) path += `active=${obj.active}&`;
 
-    if (urlData.endsWith('&')) urlData = urlData.slice(0, -1);
+    if (path.endsWith('&')) path = path.slice(0, -1);
 
-    const response = await fetch(urlData, {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-        }
-    });
-
-    const content = await response.json();
-    return content?.data || content;
+    return await apiFetch(path);
 };
 
 export { getAvtarsApi };

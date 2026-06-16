@@ -1,30 +1,18 @@
-const url = import.meta.env.VITE_API_URL;
+import { apiFetch } from '../apiFetch.api.js';
 
 const getOrdersApi = async (obj) => {
 
-    let urlData = `${url}/api/order?`;
+    let path = '/api/order?';
 
-    if (obj.page) urlData += `page=${obj.page}&`;
-    if (obj.id) urlData += `id=${obj.id}&`;
-    if (obj.userId) urlData += `userid=${obj.userId}&`;
-    if (obj.status) urlData += `status=${obj.status}&`;
-    if (obj.active !== undefined) urlData += `active=${obj.active}&`;
+    if (obj.page) path += `page=${obj.page}&`;
+    if (obj.id) path += `id=${obj.id}&`;
+    if (obj.userId) path += `userid=${obj.userId}&`;
+    if (obj.status) path += `status=${obj.status}&`;
+    if (obj.active !== undefined) path += `active=${obj.active}&`;
 
-    if (urlData.endsWith('&')) urlData = urlData.slice(0, -1);
+    if (path.endsWith('&')) path = path.slice(0, -1);
 
-    const token = localStorage.getItem('token');
-
-    const response = await fetch(urlData, {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    });
-
-    const content = await response.json();
-    return content?.data || content;
+    return await apiFetch(path);
 };
 
 export { getOrdersApi };

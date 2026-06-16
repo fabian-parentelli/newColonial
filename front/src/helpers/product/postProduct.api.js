@@ -1,20 +1,12 @@
-const url = import.meta.env.VITE_API_URL;
+import { apiFetch } from '../apiFetch.api.js';
 
 const postProductApi = async (product) => {
     
-    const token = localStorage.getItem('token');
-
-    const response = await fetch(`${url}/api/product`, {
+    return await apiFetch('/api/product', {
         method: 'POST',
         body: product,
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    });
+    }, true);
 
-    const content = await response.json();
-    return content?.data || content;
 };
 
 export { postProductApi };

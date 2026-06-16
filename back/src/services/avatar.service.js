@@ -3,7 +3,7 @@ import { getPublicId, deleteImg } from "../config/cloudinary.config.js";
 import { AvatarNotFound } from '../utils/custom-exceptions.utils.js';
 import { verifyRole } from "../utils/utilsServices/users.utils.js";
 
-const postAvatar = async (body, imagesUrl, { user }) => {
+const postAvatar = async (body, imagesUrl, user) => {
     if (user.role !== 'master') throw new AvatarNotFound('Error de permisos');
     body.url = imagesUrl[0];
     const result = await avatarRepository.postAvatar(body);
@@ -20,7 +20,7 @@ const getAvatars = async ({ page = 1, active }) => {
     return { status: 'success', result };
 };
 
-const putAvatar = async ({ id, password }, { user }) => {
+const putAvatar = async ({ id, password }, user) => {
     await verifyRole(password, user._id, ['master']);
     const avatar = await avatarRepository.getById(id);
     avatar.active = !avatar.active;
@@ -29,7 +29,7 @@ const putAvatar = async ({ id, password }, { user }) => {
     return { status: 'success', result };
 };
 
-const deleteAvatar = async ({ id, password }, { user }) => {
+const deleteAvatar = async ({ id, password }, user) => {
     await verifyRole(password, user._id, ['master']);
     const avatar = await avatarRepository.getById(id);
     const imgId = getPublicId(avatar.url);
