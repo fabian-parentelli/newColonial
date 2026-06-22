@@ -1,10 +1,11 @@
 import './dashUsers.css';
 import { useState } from 'react';
-import DashProfil from '../DashProfil/DashProfil';
-import DashUsersNew from './DashUsersNew/DashUsersNew';
+import DashProfil from '../DashProfil/DashProfil.jsx';
+import DashUsersNew from './DashUsersNew/DashUsersNew.jsx';
+import DashCustomer from './DashCustomer/DashCustomer.jsx';
+import { useLoginContext } from '@/context/LoginContext.jsx';
 import DashUsersTable from './DashusersTable/DashusersTable';
-import { useLoginContext } from '../../../context/LoginContext';
-import TitleDash from '../../../components/utils/TitleDash/TitleDash';
+import TitleDash from '@/components/utils/TitleDash/TitleDash.jsx';
 
 const DashUsers = () => {
 
@@ -21,11 +22,13 @@ const DashUsers = () => {
                 <button className='btn btnA' style={{ color: vew === 'use' ? '#F4B942' : '' }} onClick={() => handlevew('use')} >Usuarios</button>
                 <button className='btn btnA' style={{ color: vew === 'new' ? '#F4B942' : '' }} onClick={() => handlevew('new')} >Crear</button>
                 <button className='btn btnA' style={{ color: vew === 'pro' ? '#F4B942' : '' }} onClick={() => handlevew('pro')} >Mi perfil</button>
+                <button className='btn btnA' style={{ color: vew === 'cus' ? '#F4B942' : '' }} onClick={() => handlevew('cus')} >Clientes</button>
             </section>
 
             {vew === 'use' && <DashUsersTable />}
             {vew === 'new' && <DashUsersNew setVew={setVew} />}
             {vew === 'pro' && <DashProfil user={user.data} titleVew={false} />}
+            {vew === 'cus' && <DashCustomer user={user.data} />}
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import { isValidEmail } from "../validations.val.js";
-import { ErrorNotFound } from "../../utils/custom-exceptions.utils.js";
+import { ErrorCustom } from "../../utils/custom-exceptions.utils.js";
 
 const login = (body) => {
     
@@ -7,21 +7,21 @@ const login = (body) => {
     const allowedKeys = ['email', 'password', 'type'];
 
     if (bodyKeys.length !== allowedKeys.length || !bodyKeys.every(key => allowedKeys.includes(key))) {
-        throw new ErrorNotFound("El cuerpo de la petición contiene propiedades no permitidas o faltan campos obligatorios.");
+        throw new ErrorCustom("El cuerpo de la petición contiene propiedades no permitidas o faltan campos obligatorios.");
     };
 
     const { email, password, type } = body;
 
     if (!type || type !== 'login') {
-        throw new ErrorNotFound("El tipo debe ser 'login'.");
+        throw new ErrorCustom("El tipo debe ser 'login'.");
     };
 
     if (!email || !isValidEmail(email)) {
-        throw new ErrorNotFound("El email es obligatorio y debe tener un formato válido.");
+        throw new ErrorCustom("El email es obligatorio y debe tener un formato válido.");
     };
 
     if (!password || typeof password !== 'string' || password.trim().length === 0) {
-        throw new ErrorNotFound("La contraseña es obligatoria.");
+        throw new ErrorCustom("La contraseña es obligatoria.");
     };
 
     return body;

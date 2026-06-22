@@ -1,5 +1,5 @@
 import { messageRepository, alertRepository } from '../repositories/index.repositories.js';
-import { MessageNotFound } from '../utils/custom-exceptions.utils.js';
+import { ErrorCustom } from '../utils/custom-exceptions.utils.js';
 
 const postMessage = async (body) => {
     if (body._id) {
@@ -10,7 +10,7 @@ const postMessage = async (body) => {
         delete body._id;
     };
     const result = await messageRepository.postMessage(body);
-    if (!result) throw new MessageNotFound('Error al traer los mensajes');
+    if (!result) throw new ErrorCustom('Error al traer los mensajes');
     await alertRepository.create({ userId: result._id, userId: body.to, type: 'postMessage' });
     return { status: 'success', result };
 };

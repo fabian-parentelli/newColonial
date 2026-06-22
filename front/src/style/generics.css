@@ -10,3 +10,10 @@
     opacity: 0.8;
     transition: .3s;
 }
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}

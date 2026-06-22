@@ -6,12 +6,14 @@ const customerCollection = 'customers';
 const customerSchema = new mongoose.Schema({
     name: { type: String, required: true, lowercase: true },
     email: { type: String },
-    location: {
-        city: { type: String },
-        address: { type: String }
-    },
-    active: { type: Boolean, default: true },
+    uid: { type: String },
     phone: { type: String },
+    area: { type: String },
+    address: { type: String },
+    observation: { type: String },
+    sale: [{ type: String, default: [] }],
+    delivery: [{ type: String, default: [] }],
+    active: { type: Boolean, default: true },
 });
 
 customerSchema.plugin(mongoosePaginate);

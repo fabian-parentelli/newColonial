@@ -1,10 +1,10 @@
 import './userComp.css';
 import { useEffect, useState } from 'react';
-import { useAlertContext } from '../../../context/AlertContext';
-import { userGetUsersApi } from '../../../helpers/users/userGets.api.js';
-import DutHtml from '../../../containers/DashBoard/DashUsers/DashUsersTable/DutHtml.jsx';
+import { useAlertContext } from '@/context/AlertContext.jsx';
+import { userGetUsersApi } from '@/helpers/users/userGets.api.js';
+import DutHtml from '@/containers/DashBoard/DashUsers/DashUsersTable/DutHtml.jsx';
 
-const UserComp = ({ uid }) => {
+const UserComp = ({ uid, setModal }) => {
 
     const { showAlert } = useAlertContext();
 
@@ -21,6 +21,14 @@ const UserComp = ({ uid }) => {
     return (
         <div className="userComp">
             {user && <DutHtml users={user.docs} />}
+
+            {setModal &&
+                <button className='btn btnA btn-center mt-1'
+                    onClick={() => setModal({ open: false, data: null, type: null })}
+                >
+                    Cerrar
+                </button>
+            }
         </div>
     );
 };

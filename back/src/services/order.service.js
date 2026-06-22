@@ -1,5 +1,5 @@
 import { orderRepository, userRepository } from '../repositories/index.repositories.js';
-import { OrderNotFound } from '../utils/custom-exceptions.utils.js';
+import { ErrorCustom } from '../utils/custom-exceptions.utils.js';
 import { newOrderHtml } from '../utils/html/newOrderHtml.utils.js';
 import { isCustomer } from '../utils/utilsServices/customer.utils.js';
 import { verifyRole } from '../utils/utilsServices/users.utils.js';
@@ -10,14 +10,14 @@ const postSale = async (body) => {
     const { user, ...rest } = body;
     const userId = await isCustomer(user);
     const result = await orderRepository.postOrder({ ...rest, userId, type: 'sale' });
-    if (!result) throw new OrderNotFound('Error al crear la orden');
+    if (!result) throw new ErrorCustom('Error al crear la orden');
     return { status: 'success' };
 };
 
 const postOrder = async (body, user) => {
     const cart = validation.postOrder(body);
     const result = await orderRepository.postOrder({ cart, userId: user._id, type: 'order' });
-    if (!result) throw new OrderNotFound('Error al crear la orden');
+    if (!result) throw new ErrorCustom('Error al crear la orden');
 
     setImmediate(async () => {
         const fullUser = await userRepository.getUser({ _id: user._id }, { name: 1, email: 1 });
@@ -39,25 +39,25 @@ const getOrders = async ({ page = 1, userid, active, status, id }) => {
     if (status) query.status = status;
     if (active !== undefined) query.active = active;
     const result = await orderRepository.getOrders(query, page);
-    if (!result) throw new OrderNotFound('Error al obtener las ordenes');
+    if (!result) throw new ErrorCustom('Error al obtener las ordenes');
     return { status: 'success', result };
 };
 
 const putStatus = async (body) => {
     const order = await orderRepository.getById(body.orderId);
-    if (!order) throw new OrderNotFound('Error al obtener la orden');
+    if (!order) throw new ErrorCustom('Error al obtener la orden');
     const result = await orderRepository.update({
         ...order, status: body.newStatus,
         active: (body.newStatus === 'delivered' || body.newStatus === 'returned') ? false : true
     });
-    if (!result) throw new OrderNotFound('Error al actualizar la orden');
+    if (!result) throw new ErrorCustom('Error al actualizar la orden');
     return { status: 'success', result };
 };
 
 const deleteOrder = async ({ id, pass }, user) => {
     await verifyRole(pass, user._id, ['admin', 'master']);    
     const result = await orderRepository.deleteOrder(id);
-    if (!result) throw new OrderNotFound('Error al eliminar la orden');
+    if (!result) throw new ErrorCustom('Error al eliminar la orden');
     return { status: 'success' };
 };
 

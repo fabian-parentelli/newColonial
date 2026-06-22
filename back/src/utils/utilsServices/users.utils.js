@@ -1,5 +1,5 @@
 import { activityRepository, alertRepository, userRepository } from "../../repositories/index.repositories.js";
-import { UserNotFound } from "../custom-exceptions.utils.js";
+import { ErrorCustom } from "../custom-exceptions.utils.js";
 import { isValidPassword } from '../hashedPassword.utils.js';
 import { createHash } from "../hashedPassword.utils.js";
 // import { generateToken } from "../jwt.utils.js";
@@ -7,8 +7,8 @@ import { createHash } from "../hashedPassword.utils.js";
 const verifyRole = async (password, userId, roles) => {
     const user = await userRepository.getUser({ _id: userId }, { password: 1, role: 1 });
     const comparePassword = isValidPassword(user, password);
-    if (!comparePassword) throw new UserNotFound('La contraseña no es correcta');
-    if (!roles.includes(user.role)) throw new UserNotFound('No tienes permiso para realizar esta tarea');
+    if (!comparePassword) throw new ErrorCustom('La contraseña no es correcta');
+    if (!roles.includes(user.role)) throw new ErrorCustom('No tienes permiso para realizar esta tarea');
 };
 
 const userOrAdmin = async (result, activity, activityByAdmin, user, userDb) => {

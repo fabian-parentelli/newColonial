@@ -1,4 +1,4 @@
-import { ErrorCustom, ErrorNotFound } from '../utils/custom-exceptions.utils.js';
+import { ErrorCustom } from '../utils/custom-exceptions.utils.js';
 import * as service from '../services/session.service.js';
 import env from '../config/dotEnv.config.js';
 
