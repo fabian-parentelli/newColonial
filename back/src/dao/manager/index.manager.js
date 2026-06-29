@@ -8,6 +8,7 @@ import Publicity from './publicity.manager.js';
 import Order from './order.manager.js';
 import Message from './message.manager.js';
 import Customer from './customer.manager.js';
+import Notice from './notice.manager.js';
 
 export const userManager = new User();
 export const activityManager = new Activity();
@@ -19,3 +20,4 @@ export const publicityManager = new Publicity();
 export const orderManager = new Order();
 export const messageManager = new Message();
 export const customerManager = new Customer();
+export const noticeManager = new Notice();

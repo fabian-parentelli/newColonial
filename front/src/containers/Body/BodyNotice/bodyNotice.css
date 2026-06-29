@@ -1,0 +1,123 @@
+.bodyNotice {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.bodyNotice-banner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--colorA);
+    background: linear-gradient(135deg, #f0f4f8, #bbd3eb);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    animation: noticeSlideIn 0.4s ease;
+}
+
+@keyframes noticeSlideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.bodyNotice-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.bodyNotice-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--colorA);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 1px;
+}
+
+.bodyNotice-text {
+    min-width: 0;
+    flex: 1;
+}
+
+.bodyNotice-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--colorB);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.bodyNotice-message {
+    font-size: 0.8rem;
+    color: #4a5568;
+    margin: 3px 0 0;
+    line-height: 1.35;
+    word-break: break-word;
+}
+
+.bodyNotice-close {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #777;
+    font-size: 1.3rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    line-height: 1;
+    margin-top: -2px;
+}
+
+.bodyNotice-close:hover {
+    color: var(--colorB);
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 480px) {
+    .bodyNotice {
+        padding: 0 0.5rem;
+    }
+
+    .bodyNotice-banner {
+        padding: 0.7rem 0.8rem;
+        gap: 0.4rem;
+        border-radius: 6px;
+        border-left-width: 3px;
+    }
+
+    .bodyNotice-content {
+        gap: 0.5rem;
+    }
+
+    .bodyNotice-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
+    }
+
+    .bodyNotice-title {
+        font-size: 0.82rem;
+    }
+
+    .bodyNotice-message {
+        font-size: 0.76rem;
+    }
+
+    .bodyNotice-close {
+        font-size: 1.4rem;
+        padding: 4px 8px;
+    }
+}

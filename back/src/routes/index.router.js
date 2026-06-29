@@ -8,6 +8,7 @@ import MessageRouter from './message.router.js'
 import SessionRouter from './session.router.js'
 import TestRouter from './router.test.js'
 import CustomerRouter from './customer.router.js'
+import NoticeRouter from './notice.router.js';
 
 export const userRouter = new UserRouter().getRouter();
 export const configRouter = new ConfigRouter().getRouter();
@@ -19,3 +20,4 @@ export const messageRouter = new MessageRouter().getRouter();
 export const sessionRouter = new SessionRouter().getRouter();
 export const testRouter = new TestRouter().getRouter();
 export const customerRouter = new CustomerRouter().getRouter();
+export const noticeRouter = new NoticeRouter().getRouter();

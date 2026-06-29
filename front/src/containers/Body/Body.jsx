@@ -7,6 +7,7 @@ import ProdSections from '../../components/products/ProdSections/ProdSectuons';
 import BodyContact from './BodyContact/BodyContact';
 import BodyButtons from './BodyButtons/BodyButtons';
 import BodyBrands from './BodyBrands/BodyBrands';
+import BodyNotice from './BodyNotice/BodyNotice';
 
 const Body = () => {
 
@@ -15,6 +16,7 @@ const Body = () => {
             <BodyNav />
             <BodyBanner />
             <BodyCategories />
+            <BodyNotice />
             <ProdSections time={500} />
             <BodyToProducts />
             <ProdSections type='launch' time={1000} />
